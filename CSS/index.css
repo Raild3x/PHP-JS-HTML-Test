@@ -37,10 +37,11 @@ input[type=submit]:hover {
 }
 
 #fields {
-    text-align: left;
+    
 }
 
 .fieldLabel {
+    Vertical-align:middle;
     display: inline-block;
     float: left;
     clear: left;

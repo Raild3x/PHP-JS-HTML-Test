@@ -25,10 +25,9 @@ function submitQuery() {
     const values = "12345"; //document.getElementById("values").value
 
     var xhttp = new XMLHttpRequest();
-    //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
-    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
     
     xhttp.onreadystatechange = function () {
         document.getElementById("response").innerHTML = "Response: waiting for response...";
@@ -40,6 +39,8 @@ function submitQuery() {
             //alert("Something went wrong. ReadyState: " + this.readyState + ", Status: " + this.status);
         }
     };
+
+    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
 
     //let query = document.getElementById("query").value
     //alert("Query was " + query);

@@ -50,7 +50,8 @@ input[type=submit]:hover {
     margin: 10px 10px;
     border-radius: 2px;
     border: 1px solid #999;
-    background-color: #45a049;
+    color: white;
+    background-color: #4CAF50;
 }
 
 .buttonBar {

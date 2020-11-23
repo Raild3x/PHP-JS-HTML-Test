@@ -4,26 +4,23 @@ $statementFailure = "A statement could not be made.<br/>";
 
 function tableExists($conn, $tableName) {
 	global $connectionFailure, $statementFailure;
-	if( !$conn ) {
-		echo $connectionFailure;
-		return false;
+	if (!$conn) {
+		die($connectionFailure);
 	}
-	echo "checking if ".$tableName." exists.<br/>";
+
 	$sql = "DESCRIBE ".$tableName.";";
 	$stmt = $conn->query($sql);
 	if( $stmt === false) {
 		echo $tableName." does not exist.<br/>";
         return false;
     }
-	echo $tableName." exists.";
 	return true;
 }
 
 function newTable($conn, $tableName, $values) {
 	global $connectionFailure, $statementFailure;
 	if (!$conn) {
-		echo $connectionFailure;
-		return false;
+		die($connectionFailure);
 	}
 	if (tableExists($conn, $tableName)) {
 		return false;
@@ -34,6 +31,23 @@ function newTable($conn, $tableName, $values) {
     if( $stmt === false) {
 		die($statementFailure);
     }
+	return true;
+}
+
+function getTables($conn) {
+	global $connectionFailure, $statementFailure;
+	if (!$conn) {
+		die($connectionFailure);
+	}
+
+	$sql = "SHOW TABLES;";
+    $stmt = $conn->query($sql);
+    if( $stmt === false) {
+		die($statementFailure);
+	}
+	while($table = mysql_fetch_array($stmt)) { // go through each row that was returned in $result
+		echo($table[0] . "<br/>");    // print the table that was returned on that row.
+	}
 	return true;
 }
 

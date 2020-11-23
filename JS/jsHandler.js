@@ -36,11 +36,12 @@ function setupHtml() {
 
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
+    console.log(document.getElementById("optionButtons").innerhtml)
     document.getElementById("optionButtons").innerhtml = "<button id='newElement'>New Element</button>"
         +"<button id='selectElement'>Select Element</button>"
         +"<button id='updateElement'>Update Element</button>"
         +"<button id='deleteElement'>Delete Element</button>";
-    console.log("NEW BUTTONS");
+    console.log(document.getElementById("optionButtons").innerhtml);
     
     
 }

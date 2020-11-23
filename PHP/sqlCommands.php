@@ -83,7 +83,10 @@ function readTable($conn, $tableName) {
     }
 	
     while($row = $stmt->fetch_array()) {
-		echo $row['Field'].":".$row['Type']."</br>";
+		foreach ($row as $field => $value) {
+			echo $field.": ".$value." | ";
+		}
+		echo "<hr>";
 	}
 	echo "Read Full Table";
 }

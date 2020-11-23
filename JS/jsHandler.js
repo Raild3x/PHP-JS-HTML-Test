@@ -10,10 +10,10 @@ function loadPage() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("isLoaded").innerHTML = "Database: " +  this.response;
-            alert("READY!");
+            //alert("READY!");
         } else {
-            document.getElementById("isLoaded").innerHTML = "Database: " +  "Failed to init";
-            alert("Something went wrong. ReadyState: " + this.readyState + ", Status: " + this.status);
+            document.getElementById("isLoaded").innerHTML = "Database: " +  "Failed to Connect";
+            //alert("Something went wrong. ReadyState: " + this.readyState + ", Status: " + this.status);
         }
     };
 }

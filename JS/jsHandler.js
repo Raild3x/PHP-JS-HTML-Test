@@ -43,7 +43,8 @@ function setupHtml() {
     };
 }
 
-function openOptions() {
+function openOptions(clickedTable) {
+    currentTable = clickedTable
     console.log("Table Selected: "+currentTable);
     currentOperation = null;
     document.getElementById("fields").innerHTML = "";

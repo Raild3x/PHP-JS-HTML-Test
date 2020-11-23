@@ -25,7 +25,7 @@ function submitQuery() {
     const values = document.getElementById("values").value
 
     var xhttp = new XMLHttpRequest();
-    
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
     xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);

@@ -25,6 +25,7 @@ function setupHtml() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             div.innerHTML = "";
+            console.log(this.response);
             var list = JSON.parse(this.response);
             console.log(this.response);
             for(var i = 0; i < list.length; i++){ 

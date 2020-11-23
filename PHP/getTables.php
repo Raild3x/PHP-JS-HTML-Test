@@ -1,4 +1,5 @@
 <?php
+include 'dbConnection.php';
 include 'sqlCommands.php';
 $conn = OpenConnection();
 if ($conn) {

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title> Databases Part 5 </title>
+    <link rel="stylesheet" type="text/css" href="../CSS/index.css">
+    <script src="../JS/jsHandler.js"></script>
+</head>
+
+<body onload="loadPage()">
+    <h3> Database Request Interface </h3>
+    <p id="isLoaded">Database: Loading...</p>
+
+    <div>
+        <label for="query">Please ask your query:</label>
+        <input type="text" id="query" name="query"><br><br>
+
+        <input type="submit" onclick="submitQuery()" value="Query">
+    </div>
+    <p id="response">Response:</p>
+</body>
+
+</html>

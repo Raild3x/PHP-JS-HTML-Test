@@ -119,7 +119,7 @@ function getDefaultValue(fieldType, fieldName) {
         return Math.floor(Math.random()*2147483647);
     }
     if (fieldType == "date") {
-        return new Date().toDateInputValue();
+        return "2000-01-01";
     }
     return "";
 }

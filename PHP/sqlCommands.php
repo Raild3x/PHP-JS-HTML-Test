@@ -82,7 +82,7 @@ function readTable($conn, $tableName) {
         die($statementFailure);
     }
 	
-    while($row = $stmt->fetch_array()) {
+    while($row = $stmt->fetch_assoc()) {
 		foreach ($row as $field => $value) {
 			echo $field.": ".$value." | ";
 		}

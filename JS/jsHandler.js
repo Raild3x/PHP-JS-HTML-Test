@@ -21,13 +21,13 @@ function setupHtml() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getTables.php", true);
     xhttp.send();
-    
+    var div = document.getElementById("tableButtons")
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            getElementById("tableButtons").innerHTML = "";
+            div.innerHTML = "";
             var list = this.response;
             for(var i = 0; i < list.length; i++){ 
-                document.write(<button>list[i]</button>); 
+                div.innerHTML = div.innerHTML + (<button>list[i]</button>); 
             } 
         }
     };

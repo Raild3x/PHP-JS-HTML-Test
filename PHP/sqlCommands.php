@@ -45,10 +45,10 @@ function getTables($conn) {
     if( $stmt === false) {
 		die($statementFailure);
 	}
-	/*while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
-		echo($table[0] . "<br/>");    // print the table that was returned on that row.
-	}*/
-	return $stmt->fetch_array();
+	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
+		$tables[] = $table;    // print the table that was returned on that row.
+	}
+	return $tables;
 }
 
 function readTable($conn, $tableName) {

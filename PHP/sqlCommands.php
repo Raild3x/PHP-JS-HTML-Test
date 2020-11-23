@@ -81,14 +81,11 @@ function readTable($conn, $tableName) {
     if ($stmt === false) {
         die($statementFailure);
     }
-	$count = 0;
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-		$contents[$count] = $row;
-		$count++;
+	
+    while($row = $stmt->fetch_array()) {
+		echo $row."</br>";
+		
     }
-
-	//sqlsrv_free_stmt( $stmt);
-	return $contents;
 }
 
 function select($conn, $tableName, $args) {

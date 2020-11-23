@@ -77,11 +77,13 @@ function showOperationInputs(operation) {
 }
 
 function updateElement(fields) {
-
+    fields.innerHTML = "Choose what elements to update.";
+    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField'></br>";
+    fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
 }
 
 function selectElement(fields) {
-    fields.innerHTML = "Specify your arguments for selection. Separate multiple items with Commas.</br>";
+    fields.innerHTML = "Specify your arguments for selection. Separate Columns with commas and Conditions with <b>AND</b> or <b>OR</b></br>";
     fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
     document.getElementById("columnsField").defaultValue = "*";

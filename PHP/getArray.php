@@ -2,6 +2,9 @@
 include 'dbConnection.php';
 include 'sqlCommands.php';
 
+$cmd;
+$tblName;
+
 if (isset($_POST['cmd'])) {
     $cmd = $_POST['cmd'];
     echo "CMD: ".$cmd;

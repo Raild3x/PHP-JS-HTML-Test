@@ -11,19 +11,22 @@ if (isset($_POST['tblName'])) {
     $tblName = $_POST['tblName'];
 }
 if (isset($_POST['values'])) {
-    $values = explode(" ",$_POST['values']);
+    $values = explode(",",$_POST['values']);
 }
 
 $success = false;
 $conn = OpenConnection();
 
-$newRowCmds = array("new row");
-foreach ($newRowCmds as $val) {
-    if ($val == $cmd) {
+switch ($cmd) {
+    case "new":
         newRow($conn, $tblName, $values);
-        echo "Successfully added new row <br/>";
-    }
-} 
+        break;
+    case "select":
+        break;
+
+    default:
+        echo "Invalid cmd passed";
+}
 
 CloseConnection($conn);
 

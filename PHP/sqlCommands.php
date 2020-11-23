@@ -122,7 +122,8 @@ function newRow($conn, $tableName, $values) {
     $stmt = $conn -> query($sql);
     if( $stmt === false) {
         die($statementFailure);
-    }
+	}
+	echo "</br> New row successfully added to ".$tableName;
 }
 
 function deleteRow($conn, $tableName, $target, $values) {

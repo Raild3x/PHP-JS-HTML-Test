@@ -1,4 +1,10 @@
+// GLOBALS
 
+var activeFieldIds = [];
+var currentOperation = null;
+
+
+// FUNCTIONS
 
 function loadPage() {
     var xhttp = new XMLHttpRequest();
@@ -30,7 +36,7 @@ function setupHtml() {
             var list = JSON.parse(this.response);
             for(var i = 0; i < list.length; i++){ 
                 var tblName = fixString(list[i]);
-                div.innerHTML = div.innerHTML + ("<button id='"+list[i]+"' class='tableButton' onclick=openOptions('"+list[i]+"')>"+tblName+"</button>"); 
+                div.innerHTML += ("<button id='"+list[i]+"' class='tableButton' onclick=openOptions('"+list[i]+"')>"+tblName+"</button>"); 
             } 
         }
     };
@@ -38,6 +44,8 @@ function setupHtml() {
 
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
+    currentOperation = null;
+    document.getElementById("fields").innerHTML = "";
     document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+tblName+"</b> table.";
     document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+tblName+"','new')>New Element</button>"
         +"<button id='selectElement' onclick=showOperationInputs('"+tblName+"','select')>Select Element</button>"
@@ -47,6 +55,8 @@ function openOptions(tblName) {
 
 function showOperationInputs(tblName, operation) {
     console.log("Performing operation: "+operation+" on table: "+tblName);
+    activeFieldIds = [];
+    currentOperation = operation;
     var fields = document.getElementById("fields")
     fields.innerHTML = ""
     switch(operation) {
@@ -54,6 +64,7 @@ function showOperationInputs(tblName, operation) {
             newElement(tblName, fields);
             break;
         case "select":
+            selectElement(tblName, fields);
             break;
         case "update":
             break;
@@ -61,6 +72,11 @@ function showOperationInputs(tblName, operation) {
             break;
     }
 }
+
+function selectElement(tblName, fields) {
+
+}
+
 
 function newElement(tblName, fields) {
     var xhttp = new XMLHttpRequest();
@@ -76,7 +92,8 @@ function newElement(tblName, fields) {
                 var dataType = columns[fieldName];
                 fieldType = getFieldType(dataType, fieldName);
                 fieldName = fixString(fieldName);
-                fields.innerHTML = fields.innerHTML + "<label class='fieldLabel'>" + fieldName + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field'></br>";
+                fields.innerHTML += "<label class='fieldLabel'>" + fieldName + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field'></br>";
+                activeFieldIds.push(fieldName+"Field");
             }
             
         }
@@ -104,8 +121,24 @@ function fixString(str) {
     return str;
 }
 
-
 function submitQuery() {
+    //collect fields
+    var response = document.getElementById("response")
+    if (currentOperation == null) {
+        response.innerHTML = "No Operation Selected to perform.";
+        return;
+    }
+
+    var values = "";
+    for (i in activeFieldIds) {
+        var id = activeFieldIds[i];
+        values += document.getElementById(id).value+",";
+    }
+    values = values.slice(0,-1);
+    console.log(values);
+}
+
+function oldsubmitQuery() {
     // The boxes are currently disabled in favor of this so I dont have to constantly retype the info
     const cmd = "new row"; //document.getElementById("cmd").value.toLowerCase();
     const tblName = "user"; //document.getElementById("tblName").value

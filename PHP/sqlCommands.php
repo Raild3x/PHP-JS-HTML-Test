@@ -57,10 +57,10 @@ function newRow($conn, $tableName, $values) {
 		$sql = $sql.' '.$values[$x].',';
 	}
 	$sql = $sql.' '.$values[sizeof($values)-1].');';
-
-    $stmt = $conn->query($sql);
+	echo $sql;
+    $stmt = $conn -> query($sql);
     if( $stmt === false) {
-        die("Statement is false.");
+        die("Failed to create statement: ");
     }
 
 	//sqlsrv_free_stmt( $stmt);

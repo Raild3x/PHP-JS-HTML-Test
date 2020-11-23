@@ -40,7 +40,7 @@ function openOptions(tblName) {
         +"<button id='selectElement'>Select Element</button>"
         +"<button id='updateElement'>Update Element</button>"
         +"<button id='deleteElement'>Delete Element</button>";
-    
+    console.log("NEW BUTTONS");
     
     
 }

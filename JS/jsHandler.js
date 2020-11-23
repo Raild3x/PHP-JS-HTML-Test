@@ -37,7 +37,7 @@ function setupHtml() {
 
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
-    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b><i>"+tblName+"</i></b> table.";
+    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+tblName+"</b> table.";
     document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+tblName+"','new')>New Element</button>"
         +"<button id='selectElement' onclick=showOperationInputs('"+tblName+"','select')>Select Element</button>"
         +"<button id='updateElement' onclick=showOperationInputs('"+tblName+"','update')>Update Element</button>"
@@ -68,8 +68,9 @@ function newElement(tblName, fields) {
     xhttp.send("cmd=columns&tblName="+tblName);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            fields.innerHTML = "Enter the data fields for a new <b><i>"+tblName+"</i></b> entry.</br>";
+            fields.innerHTML = "Enter the data fields for a new <b>"+tblName+"</b> entry.</br>";
             var columns = JSON.parse(this.response);
+            console.log(this.response);
             for (col in columns) {
                 fields.innerHTML = fields.innerHTML + col + "<input type='text' id='"+col+"Field'></br>";
             }

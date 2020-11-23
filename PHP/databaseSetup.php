@@ -22,8 +22,6 @@ if ($conn) {
         "expId INT, device VARCHAR(255), FOREIGN KEY (expId) REFERENCES vrExperience(expId)");
     newTable($conn, "develops",
         "userId INT NOT NULL, unitId INT NOT NULL, unitName VARCHAR(255), expId INT, FOREIGN KEY (userId) REFERENCES user(userId), FOREIGN KEY (unitName) REFERENCES devUnit(unitName), FOREIGN KEY (unitId) REFERENCES devUnit(unitId), FOREIGN KEY (expId) REFERENCES vrExperience(expId)");
-    
-    getTables($conn);
 
     echo "Connected Successfully";
     CloseConnection($conn);

@@ -10,10 +10,25 @@ function loadPage() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("isLoaded").innerHTML = "Database: " +  this.response;
-            //alert("READY!");
+            setupHtml();
         } else {
             document.getElementById("isLoaded").innerHTML = "Database: " +  "Failed to Connect";
-            //alert("Something went wrong. ReadyState: " + this.readyState + ", Status: " + this.status);
+        }
+    };
+}
+
+function setupHtml() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../PHP/getTables.php", true);
+    xhttp.send();
+    
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            getElementById("tableButtons").innerHTML = "";
+            var list = this.response;
+            for(var i = 0; i < list.length; i++){ 
+                document.write(<button>list[i]</button>); 
+            } 
         }
     };
 }

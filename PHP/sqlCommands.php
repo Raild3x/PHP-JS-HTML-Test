@@ -45,10 +45,10 @@ function getTables($conn) {
     if( $stmt === false) {
 		die($statementFailure);
 	}
-	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
+	/*while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
 		echo($table[0] . "<br/>");    // print the table that was returned on that row.
-	}
-	return true;
+	}*/
+	return $stmt->fetch_array();
 }
 
 function readTable($conn, $tableName) {
@@ -79,12 +79,10 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 	}
 
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
-    $stmt = $conn->query($sql );
+    $stmt = $conn -> query($sql);
     if ($stmt === false) {
         die($statementFailure);
     }
-
-	//sqlsrv_free_stmt( $stmt);
 }
 
 function newRow($conn, $tableName, $values) {

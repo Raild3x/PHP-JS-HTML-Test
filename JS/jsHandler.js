@@ -49,10 +49,10 @@ function openOptions(clickedTable) {
     currentOperation = null;
     document.getElementById("fields").innerHTML = "";
     document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+currentTable+"</b> table.";
-    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+currentTable+"','new')>New Element</button>"
-        +"<button id='selectElement' onclick=showOperationInputs('"+currentTable+"','select')>Select Element</button>"
-        +"<button id='updateElement' onclick=showOperationInputs('"+currentTable+"','update')>Update Element</button>"
-        +"<button id='deleteElement' onclick=showOperationInputs('"+currentTable+"','delete')>Delete Element</button>";
+    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('new')>New Element</button>"
+        +"<button id='selectElement' onclick=showOperationInputs('select')>Select Element</button>"
+        +"<button id='updateElement' onclick=showOperationInputs('update')>Update Element</button>"
+        +"<button id='deleteElement' onclick=showOperationInputs('delete')>Delete Element</button>";
 }
 
 function showOperationInputs(operation) {

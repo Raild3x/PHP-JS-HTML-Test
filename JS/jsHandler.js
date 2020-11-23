@@ -72,8 +72,8 @@ function newElement(tblName, fields) {
             fields.innerHTML = "Enter the data fields for a new <b>"+tblName+"</b> entry.</br>";
             console.log(this.response);
             var columns = JSON.parse(this.response);
-            for (dataType in columns) {
-                var fieldName = columns[dataType];
+            for (fieldName in columns) {
+                var dataType = columns[fieldName];
                 fieldType = getFieldType(dataType, fieldName);
                 fieldName = fixString(fieldName);
                 fields.innerHTML = fields.innerHTML + "<label class='fieldLabel'>" + fieldName + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field'></br>";

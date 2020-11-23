@@ -24,12 +24,13 @@ switch ($cmd) {
         newRow($conn, $tblName, $values);
         break;
     case "select":
-        if ($values == ""){
+        if ($values.count() == 0){
+            echo "Reading full table";
             readTable($conn, $tblName);
         } else {
+            echo "Reading table selection.";
             select($conn, $tblName, $values);
         }
-        
         break;
 
     default:

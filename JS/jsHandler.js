@@ -167,7 +167,7 @@ function submitQuery() {
     document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("response").innerHTML = "Response: " +  this.response;
+            document.getElementById("response").innerHTML = "Response:<hr>" +  this.response;
         } else {
             document.getElementById("response").innerHTML = "Failed to read response: " + this.response + "\t"+this.readyState+":"+this.status;
         }

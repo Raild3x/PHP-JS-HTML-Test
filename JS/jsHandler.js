@@ -69,14 +69,21 @@ function showOperationInputs(operation) {
             selectElement(fields);
             break;
         case "update":
+            updateElements(fields);
             break;
         case "delete":
             break;
     }
 }
 
+function updateElement(fields) {
+
+}
+
 function selectElement(fields) {
-    //fields.innerHTML = "<label class='fieldLabel'>: </label><input type='text' id='"+fieldName+"Field' value="+getDefaultValue(fieldType, fieldName)+"></br>";
+    fields.innerHTML = "Specify your arguments for selection.</br>";
+    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField'></br>";
+    fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='condition1Field'></br>";
 }
 
 
@@ -168,28 +175,6 @@ function submitQuery() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("response").innerHTML = "Response:<hr>" +  this.response;
-        } else {
-            document.getElementById("response").innerHTML = "Failed to read response: " + this.response + "\t"+this.readyState+":"+this.status;
-        }
-    };
-}
-
-function oldsubmitQuery() {
-    // The boxes are currently disabled in favor of this so I dont have to constantly retype the info
-    const cmd = "new row"; //document.getElementById("cmd").value.toLowerCase();
-    const currentTable = "user"; //document.getElementById("currentTable").value
-    const values = "12345 1997-12-29 David L Hunt 2dloganh@gmail.com"; //document.getElementById("values").value
-
-    var xhttp = new XMLHttpRequest();
-    // Send PHP request as (post/get, file location, async option)
-    xhttp.open("POST", "../PHP/query.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd="+cmd+"&tblName="+currentTable+"&values="+values);
-
-    document.getElementById("response").innerHTML = "Response: waiting for response...";
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("response").innerHTML = "Response: " +  this.response;
         } else {
             document.getElementById("response").innerHTML = "Failed to read response: " + this.response + "\t"+this.readyState+":"+this.status;
         }

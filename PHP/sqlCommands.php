@@ -89,7 +89,7 @@ function readTable($conn, $tableName) {
 		}
 		echo "<hr>";
 	}
-	echo "Read Full Table";
+	echo "Displaying ".$tableName." Table";
 }
 
 function select($conn, $tableName, $args) {

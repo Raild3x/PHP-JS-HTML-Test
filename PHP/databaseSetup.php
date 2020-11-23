@@ -1,4 +1,5 @@
 <?php
+
 include 'dbConnection.php';
 
 $conn = OpenConnection();

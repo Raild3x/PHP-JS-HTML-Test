@@ -85,7 +85,7 @@ function selectElement(fields) {
     fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField' value='*'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
     activeFieldIds.push("columnsField");
-    activeFieldIds.push("conditionsField");
+    activeFieldIds.push("conditionField");
 }
 
 

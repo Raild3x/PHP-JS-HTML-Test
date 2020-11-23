@@ -30,7 +30,7 @@ function newTable($conn, $tableName, $values) {
 		echo $statementFailure;
         return false;
     }
-	return true
+	return true;
 }
 
 function readTable($conn, $tableName) {

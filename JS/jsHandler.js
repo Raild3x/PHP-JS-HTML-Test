@@ -35,7 +35,8 @@ function setupHtml() {
 }
 
 function openOptions(tblName) {
-    print("Table Selected: "+tblName);
+    console.log("Table Selected: "+tblName);
+    document.getElementById("optionButtons").style.display = "block";
 }
 
 

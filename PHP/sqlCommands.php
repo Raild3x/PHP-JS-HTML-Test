@@ -52,7 +52,7 @@ function getTables($conn) {
 	return $tables;
 }
 
-function getColumns($conn) {
+function getColumns($conn, $tblName) {
 	global $connectionFailure, $statementFailure;
 	if (!$conn) {
 		die($connectionFailure);

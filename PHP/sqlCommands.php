@@ -17,7 +17,7 @@ function readTable($conn, $tableName) {
 		$count++;
     }
 
-	sqlsrv_free_stmt( $stmt);
+	//sqlsrv_free_stmt( $stmt);
 	return $contents;
 }
 
@@ -28,12 +28,12 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 	}
 
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
-    $stmt = sqlsrv_$conn->query($sql );
+    $stmt = $conn->query($sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
-	sqlsrv_free_stmt( $stmt);
+	//sqlsrv_free_stmt( $stmt);
 }
 
 function newRow($conn, $tableName, $values) {
@@ -63,7 +63,7 @@ function newRow($conn, $tableName, $values) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
-	sqlsrv_free_stmt( $stmt);
+	//sqlsrv_free_stmt( $stmt);
 }
 
 function deleteRow($conn, $tableName, $target, $value) {
@@ -78,7 +78,7 @@ function deleteRow($conn, $tableName, $target, $value) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
-	sqlsrv_free_stmt( $stmt);
+	//sqlsrv_free_stmt( $stmt);
 }
 
 ?>

@@ -82,8 +82,8 @@ function readTable($conn, $tableName) {
         die($statementFailure);
     }
 	
-    while($row = $stmt->fetch_assoc()) {
-		echo $row[0].",".$row[1]."</br>";
+    while($row = $stmt->fetch_array()) {
+		echo $row['Field'].":".$row['Type']."</br>";
 	}
 	echo "Read Full Table";
 }

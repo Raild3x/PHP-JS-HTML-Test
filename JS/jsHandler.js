@@ -116,7 +116,10 @@ function getFieldType(dataType, fieldName) {
 
 function getDefaultValue(fieldType, fieldName) {
     if (fieldName.search("Id") != -1) {
-        return Math.random()*2147483647;
+        return Math.floor(Math.random()*2147483647);
+    }
+    if (fieldType == "date") {
+        return new Date().toDateInputValue();
     }
     return "";
 }

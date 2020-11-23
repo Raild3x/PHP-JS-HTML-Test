@@ -17,7 +17,6 @@ if (isset($_POST['values'])) {
     $values = explode(",",$_POST['values']);
 }
 
-$success = false;
 $conn = OpenConnection();
 
 switch ($cmd) {
@@ -25,6 +24,12 @@ switch ($cmd) {
         newRow($conn, $tblName, $values);
         break;
     case "select":
+        if ($values == ""){
+            readTable($conn, $tblName);
+        } else {
+            select($conn, $tblName, $values);
+        }
+        
         break;
 
     default:
@@ -32,10 +37,6 @@ switch ($cmd) {
 }
 
 CloseConnection($conn);
-
-if (!$success) {
-    echo "Failed Query";
-}
 
 
 ?>

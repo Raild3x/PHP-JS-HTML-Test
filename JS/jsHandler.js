@@ -76,7 +76,7 @@ function showOperationInputs(operation) {
 }
 
 function selectElement(fields) {
-
+    //fields.innerHTML = "<label class='fieldLabel'>: </label><input type='text' id='"+fieldName+"Field' value="+getDefaultValue(fieldType, fieldName)+"></br>";
 }
 
 

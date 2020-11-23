@@ -91,6 +91,10 @@ function readTable($conn, $tableName) {
 	return $contents;
 }
 
+function select($conn, $tableName, $args) {
+
+}
+
 function updateTable($conn, $tableName, $change, $column, $targetId) {
 	global $connectionFailure, $statementFailure;
 	if (!$conn) {

@@ -61,7 +61,7 @@ input[type=submit]:hover {
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
+    padding: 14px 30px;
     border: 1px solid;
     cursor: pointer;
     transition-duration: 0.4s;

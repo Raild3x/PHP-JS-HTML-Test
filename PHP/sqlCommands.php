@@ -42,7 +42,7 @@ function newRow($conn, $tableName, $values) {
 		die();
 	}
 
-	$sql = 'INSERT INTO '.$tableName.' (';
+	$sql = 'INSERT INTO '.$tableName.' VALUES (';
 	/*$keys = array_keys($values);
 	for ($x = 0; $x < (sizeof($values)-1); $x++) {
 		$sql = $sql.' '.$keys[$x].',';

@@ -38,7 +38,7 @@ function newTable($conn, $tableName, $values) {
 function readTable($conn, $tableName) {
 	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		die($connectionFailure)
+		die($connectionFailure);
 	}
 
 	$sql = "SELECT * FROM ".$tableName."";
@@ -57,24 +57,24 @@ function readTable($conn, $tableName) {
 }
 
 function updateTable($conn, $tableName, $change, $column, $targetId) {
+	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		echo "Connection could not be established.<br /> ";
-		die( print_r( sqlsrv_errors(), true));
+		die($connectionFailure));
 	}
 
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
     $stmt = $conn->query($sql );
     if( $stmt === false) {
-        die("Statement is false. ");
+        die($statementFailure);
     }
 
 	//sqlsrv_free_stmt( $stmt);
 }
 
 function newRow($conn, $tableName, $values) {
+	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		echo "Connection could not be established.<br />";
-		die();
+		die($connectionFailure));
 	}
 
 	$sql = 'INSERT INTO '.$tableName.' VALUES (';
@@ -88,23 +88,21 @@ function newRow($conn, $tableName, $values) {
 
     $stmt = $conn -> query($sql);
     if( $stmt === false) {
-        die("Failed to create statement: ");
+        die($statementFailure);
     }
 }
 
 function deleteRow($conn, $tableName, $target, $values) {
+	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		echo "Connection could not be established.<br />";
-		die( print_r( sqlsrv_errors(), true));
+		die($connectionFailure));
 	}
 
 	$sql = 'DELETE FROM '.$tableName.' WHERE '.$target.'='.$values;
     $stmt = $conn->query($sql );
     if( $stmt === false) {
-        die("Statement is false.");
+        die($statementFailure);
     }
-
-	//sqlsrv_free_stmt( $stmt);
 }
 
 ?>

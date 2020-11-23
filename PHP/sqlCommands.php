@@ -42,8 +42,8 @@ function newRow($conn, $tableName, $values) {
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$keys = array_keys($values);
 	$sql = 'INSERT INTO '.$tableName.' (';
+	/*$keys = array_keys($values);
 	for ($x = 0; $x < (sizeof($values)-1); $x++) {
 		$sql = $sql.' '.$keys[$x].',';
 	} 
@@ -52,6 +52,10 @@ function newRow($conn, $tableName, $values) {
 		$sql = $sql.' '.$values[$keys[$x]].',';
 	} 
 	$sql = $sql.' '.$values[$keys[sizeof($values)-1]].')';
+	*/
+	for ($x = 0; $x < (sizeof($values)-1); $x++) {
+		$sql = $sql.' '.$values[$x].',';
+	}
     $stmt = query( $conn, $sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );

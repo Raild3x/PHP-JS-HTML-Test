@@ -49,12 +49,7 @@ function showOperationInputs(tblName, operation) {
     fields.innerHTML = ""
     switch(operation) {
         case "new":
-            fields.innerHTML = "Enter the data fields for a new <b><i>"+tblName+"</i></b> entry.</br>";
-            var columns = getTableColumns(tblName);
-            for (col in columns) {
-                fields.innerHTML = fields.innerHTML + col + "<input type='text' id='"+col+"Field'></br>";
-            }
-            
+            newElement(tblName, fields);
             break;
         case "select":
             break;
@@ -65,13 +60,18 @@ function showOperationInputs(tblName, operation) {
     }
 }
 
-function getTableColumns(tblName) {
+function newElement(tblName, fields) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getArray.php", true);
     xhttp.send("cmd=columns&tblName="+tblName);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            return JSON.parse(this.response);
+            fields.innerHTML = "Enter the data fields for a new <b><i>"+tblName+"</i></b> entry.</br>";
+            var columns = JSON.parse(this.response);
+            for (col in columns) {
+                fields.innerHTML = fields.innerHTML + col + "<input type='text' id='"+col+"Field'></br>";
+            }
+            
         }
     };
 }

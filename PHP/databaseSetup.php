@@ -6,8 +6,8 @@ include 'sqlCommands.php';
 $conn = OpenConnection();
 if ($conn) {
 
-    tableExists("user");
-    tableExists("freeUser");
+    tableExists($conn, "user");
+    tableExists($conn, "freeUser");
 
     echo "Connected Successfully";
     CloseConnection($conn);

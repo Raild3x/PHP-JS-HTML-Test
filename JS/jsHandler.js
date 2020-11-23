@@ -35,7 +35,7 @@ function submitQuery() {
             document.getElementById("response").innerHTML = "Response: " +  this.response;
             //alert("READY!");
         } else {
-            document.getElementById("isLoaded").innerHTML = "Database: " +  "Failed to Connect";
+            document.getElementById("response").innerHTML = "Failed to read response: " + this.response + "\t"+this.readyState+":"+this.status;
             //alert("Something went wrong. ReadyState: " + this.readyState + ", Status: " + this.status);
         }
     };

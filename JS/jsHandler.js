@@ -26,9 +26,9 @@ function submitQuery() {
 
     var xhttp = new XMLHttpRequest();
     document.getElementById("response").innerHTML = "Response: waiting for response..";
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
     document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {

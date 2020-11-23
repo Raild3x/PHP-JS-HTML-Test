@@ -14,7 +14,7 @@ foreach ($newRowCmds as $val) {
     if ($val == $cmd) {
         newRow($conn, $tblName, $values);
         echo "Successfully added new row";
-        break;
+        die();
     }
 } 
 

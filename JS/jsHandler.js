@@ -69,8 +69,8 @@ function newElement(tblName, fields) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             fields.innerHTML = "Enter the data fields for a new <b>"+tblName+"</b> entry.</br>";
-            var columns = JSON.parse(this.response);
             console.log(this.response);
+            var columns = JSON.parse(this.response);
             for (col in columns) {
                 fields.innerHTML = fields.innerHTML + col + "<input type='text' id='"+col+"Field'></br>";
             }

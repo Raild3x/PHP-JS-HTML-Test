@@ -1,4 +1,37 @@
 <?php
+$connectionFailure = "Connection could not be established.<br/>";
+$statementFailure = "A statement could not be made.<br/>";
+
+function tableExists($conn, $tableName) {
+	if( !$conn ) {
+		echo $connectionFailure;
+		return false;
+	}
+
+	$sql = "DESCRIBE ".$tableName.";";
+	$stmt = $conn->query($sql);
+	echo $tableName." exists: ".$stmt
+	if( $stmt === false) {
+		echo $statementFailure;
+        return false;
+    }
+
+}
+
+function newTable($conn, $tableName, $values) {
+	if( !$conn ) {
+		echo "Connection could not be established.<br/>";
+		return false;
+	}
+
+	$sql = "CREATE TABLE ".$tableName." (".$values.");";
+    $stmt = $conn->query($sql);
+    if( $stmt === false) {
+		echo $statementFailure;
+        return false;
+    }
+	return true
+}
 
 function readTable($conn, $tableName) {
 	if( !$conn ) {
@@ -9,7 +42,7 @@ function readTable($conn, $tableName) {
 	$sql = "SELECT * FROM ".$tableName."";
     $stmt = $conn->query($sql );
     if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
+        die($statementFailure);
     }
 	$count = 0;
     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {

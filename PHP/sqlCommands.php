@@ -8,7 +8,7 @@ function tableExists($conn, $tableName) {
 		echo $connectionFailure;
 		return false;
 	}
-
+	echo "checking if ".$tableName." exists.<br/>";
 	$sql = "DESCRIBE ".$tableName.";";
 	$stmt = $conn->query($sql);
 	if( $stmt === false) {

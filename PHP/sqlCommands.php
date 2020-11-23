@@ -83,7 +83,7 @@ function readTable($conn, $tableName) {
     }
 	
     while($row = $stmt->fetch_assoc()) {
-		echo $row.":".$row[0].",</br>";
+		echo $row[0].","$row[1]."</br>";
 	}
 	echo "Read Full Table";
 }

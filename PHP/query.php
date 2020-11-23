@@ -26,10 +26,10 @@ switch ($cmd) {
         break;
     case "select":
         if (sizeof($values) == 1) {
-            readTable($conn, $tblName);
+            readTable($conn, $tblName, $columns);
         } else {
-            $columns = explode(",",$values[0]);
-            $conditions = explode(",",$values[1]);
+            $columns = values[0];//explode(",",$values[0]);
+            $conditions = values[1];//explode(",",$values[1]);
             select($conn, $tblName, $columns, $conditions);
         }
         break;

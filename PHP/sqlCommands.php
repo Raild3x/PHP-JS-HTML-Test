@@ -70,13 +70,17 @@ function getColumns($conn, $tblName) {
 	return $cols;
 }
 
-function readTable($conn, $tableName) {
+function readTable($conn, $tableName, $columns) {
 	global $connectionFailure, $statementFailure;
 	if (!$conn) {
 		die($connectionFailure);
 	}
 
-	$sql = "SELECT * FROM ".$tableName.";";
+	if ($columns == "all" || $columns == "") {
+		$columns = "*"
+	}
+
+	$sql = "SELECT ".$columns." FROM ".$tableName.";";
     $stmt = $conn->query($sql);
     if ($stmt === false) {
         die($statementFailure);
@@ -92,8 +96,29 @@ function readTable($conn, $tableName) {
 	echo "Displaying ".$tableName." Table";
 }
 
-function select($conn, $tableName, $args) {
+function select($conn, $tableName, $columns, $conditions) {
+	global $connectionFailure, $statementFailure;
+	if (!$conn) {
+		die($connectionFailure);
+	}
 
+	if ($columns == "all" || $columns == "") {
+		$columns = "*"
+	}
+
+	$sql = "SELECT ".$columns." FROM ".$tableName." WHERE ".$conditions.";";
+    $stmt = $conn->query($sql);
+    if ($stmt === false) {
+        die($statementFailure);
+    }
+	
+    while($row = $stmt->fetch_assoc()) {
+		echo "| ";
+		foreach ($row as $field => $value) {
+			echo $field.": ".$value." | ";
+		}
+		echo "<hr>";
+	}
 }
 
 function updateTable($conn, $tableName, $change, $column, $targetId) {

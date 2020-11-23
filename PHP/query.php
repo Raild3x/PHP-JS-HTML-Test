@@ -24,7 +24,7 @@ switch ($cmd) {
         newRow($conn, $tblName, $values);
         break;
     case "select":
-        if (count($values) == 0){
+        if ($values[0] == "") {
             echo "Reading full table";
             readTable($conn, $tblName);
         } else {

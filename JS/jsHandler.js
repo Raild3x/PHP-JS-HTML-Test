@@ -84,6 +84,7 @@ function selectElement(fields) {
     fields.innerHTML = "Specify your arguments for selection. Separate multiple items with Commas.</br>";
     fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField' defaultValue='*'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
+    console.log("defaultValue:"+document.getElementById("columnsField").defaultValue);
     activeFieldIds.push("columnsField");
     activeFieldIds.push("conditionField");
 }

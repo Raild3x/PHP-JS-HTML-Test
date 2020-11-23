@@ -160,7 +160,7 @@ function submitQuery() {
         console.log(id);
         var data = document.getElementById(id).value
         if (data == "") {
-            data = document.getElementById(id).getDefaultValue;
+            data = document.getElementById(id).defaultValue;
         }
         if (data != "") {
             values += data+"|";

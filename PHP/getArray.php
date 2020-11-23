@@ -14,14 +14,13 @@ $conn = OpenConnection();
 if ($conn) {
     switch($cmd) {
         case "tables":
-            echo "reached";
             echo json_encode(getTables($conn));
             break;
         case "columns":
             echo json_encode(getColumns($conn, $tblName));
             break;
         default:
-            echo "Invalid command given. <br/>";
+            echo "!INVALID COMMAND GIVEN! ".$cmd."<br/>";
     }
         
     CloseConnection($conn);

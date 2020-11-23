@@ -10,7 +10,7 @@ function tableExists($conn, $tableName) {
 
 	$sql = "DESCRIBE ".$tableName.";";
 	$stmt = $conn->query($sql);
-	echo $tableName." exists: ".$stmt
+	echo $tableName." exists: ".$stmt;
 	if( $stmt === false) {
 		echo $statementFailure;
         return false;

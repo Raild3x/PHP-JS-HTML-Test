@@ -84,15 +84,15 @@ function newElement(tblName, fields) {
 }
 
 function getFieldType(dataType, fieldName) {
-    if (dataType.search("varchar")) {
-        if (fieldName.search("email")) {
+    if (dataType.search("varchar") != -1) {
+        if (fieldName.search("email") != -1) {
             return "email";
         } else {
             return "text";
         }
-    } else if (dataType.search("int")) {
+    } else if (dataType.search("int") != -1) {
         return "number";
-    } else if (dataType.search("date")) {
+    } else if (dataType.search("date") != -1) {
         return "date";
     }
     return "text";

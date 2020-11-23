@@ -20,6 +20,7 @@ function loadPage() {
 
 
 function submitQuery() {
+    // The boxes are currently disabled in favor of this so I dont have to constantly retype the info
     const cmd = "new row"; //document.getElementById("cmd").value.toLowerCase();
     const tblName = "user"; //document.getElementById("tblName").value
     const values = "12345 1997-12-29 David L Hunt 2dloganh@gmail.com"; //document.getElementById("values").value

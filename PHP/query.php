@@ -17,7 +17,7 @@ if (isset($_POST['values'])) {
     $values = explode(" ",$_POST['values']);
 }
 
-
+$success = false;
 $conn = OpenConnection();
 
 $newRowCmds = array("new row");
@@ -30,6 +30,9 @@ foreach ($newRowCmds as $val) {
 
 CloseConnection($conn);
 
-echo "Failed Query";
+if (!success) {
+    echo "Failed Query";
+}
+
 
 ?>

@@ -41,6 +41,7 @@ function openOptions(tblName) {
         +"<button id='selectElement' onclick=showInput('"+tblName+"', 'select')>Select Element</button>"
         +"<button id='updateElement' onclick=showInput('"+tblName+"', 'update')>Update Element</button>"
         +"<button id='deleteElement' onclick=showInput('"+tblName+"', 'delete')>Delete Element</button>";
+    console.log("end of open options")
 }
 
 function showInput(tblName, operation) {

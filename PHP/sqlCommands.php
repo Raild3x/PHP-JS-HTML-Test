@@ -54,9 +54,9 @@ function newRow($conn, $tableName, $values) {
 	$sql = $sql.' '.$values[$keys[sizeof($values)-1]].')';
 	*/
 	for ($x = 0; $x < (sizeof($values)-1); $x++) {
-		$sql = $sql.' '.$values[$x].',';
+		$sql = $sql." '".$values[$x]."',";
 	}
-	$sql = $sql.' '.$values[sizeof($values)-1].');';
+	$sql = $sql." '".$values[sizeof($values)-1]."');";
 	echo $sql;
     $stmt = $conn -> query($sql);
     if( $stmt === false) {

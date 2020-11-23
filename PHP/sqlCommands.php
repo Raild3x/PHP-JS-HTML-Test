@@ -45,7 +45,7 @@ function getTables($conn) {
     if( $stmt === false) {
 		die($statementFailure);
 	}
-	while($table = mysql_fetch_array($stmt)) { // go through each row that was returned in $result
+	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
 		echo($table[0] . "<br/>");    // print the table that was returned on that row.
 	}
 	return true;

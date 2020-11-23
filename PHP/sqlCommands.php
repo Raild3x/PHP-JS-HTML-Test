@@ -3,6 +3,7 @@ $connectionFailure = "Connection could not be established.<br/>";
 $statementFailure = "A statement could not be made.<br/>";
 
 function tableExists($conn, $tableName) {
+	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
 		echo $connectionFailure;
 		return false;
@@ -19,6 +20,7 @@ function tableExists($conn, $tableName) {
 }
 
 function newTable($conn, $tableName, $values) {
+	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
 		echo "Connection could not be established.<br/>";
 		return false;
@@ -34,9 +36,9 @@ function newTable($conn, $tableName, $values) {
 }
 
 function readTable($conn, $tableName) {
+	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		echo "Connection could not be established.<br/>";
-		die( print_r( sqlsrv_errors(), true));
+		die($connectionFailure)
 	}
 
 	$sql = "SELECT * FROM ".$tableName."";

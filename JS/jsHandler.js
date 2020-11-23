@@ -35,7 +35,7 @@ function setupHtml() {
 }
 
 function openOptions(tblName) {
-
+    print("Table Selected: "+tblName);
 }
 
 

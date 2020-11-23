@@ -6,11 +6,11 @@ input[type=text], select {
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline;
+    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    text-align: left;
+    float: left;
 }
 
 input[type=submit] {
@@ -41,6 +41,10 @@ input[type=submit]:hover {
 }
 
 .fieldLabel {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 20%;
     text-align: right;
 }
 

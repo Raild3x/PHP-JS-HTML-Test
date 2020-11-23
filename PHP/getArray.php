@@ -4,6 +4,7 @@ include 'sqlCommands.php';
 
 if (isset($_POST['cmd'])) {
     $cmd = $_POST['cmd'];
+    echo "CMD: ".$cmd;
 }
 
 if (isset($_POST['tblName'])) {

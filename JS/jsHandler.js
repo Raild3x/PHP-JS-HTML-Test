@@ -82,7 +82,7 @@ function updateElement(fields) {
 
 function selectElement(fields) {
     fields.innerHTML = "Specify your arguments for selection. Separate multiple items with Commas.</br>";
-    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField' value='*'></br>";
+    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField' defaultValue='*'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
     activeFieldIds.push("columnsField");
     activeFieldIds.push("conditionField");
@@ -159,6 +159,9 @@ function submitQuery() {
         var id = activeFieldIds[i];
         console.log(id);
         var data = document.getElementById(id).value
+        if (data == "") {
+            data = document.getElementById(id).getDefaultValue;
+        }
         if (data != "") {
             values += data+"|";
         }

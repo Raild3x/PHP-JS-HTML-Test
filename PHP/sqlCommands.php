@@ -66,14 +66,14 @@ function newRow($conn, $tableName, $values) {
 	//sqlsrv_free_stmt( $stmt);
 }
 
-function deleteRow($conn, $tableName, $target, $value) {
+function deleteRow($conn, $tableName, $target, $values) {
 	if( !$conn ) {
 		echo "Connection could not be established.<br />";
 		die( print_r( sqlsrv_errors(), true));
 	}
 
 	$sql = 'DELETE FROM '.$tableName.' WHERE '.$target.'='.$values;
-    $stmt = sqlsrv_$conn->query($sql );
+    $stmt = $conn->query($sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }

@@ -3,6 +3,9 @@ include 'dbConnection.php';
 include 'sqlCommands.php';
 
 // Read data sent over post
+$cmd;
+$tblName;
+$values;
 
 if (isset($_POST['cmd'])) {
     $cmd = $_POST['cmd'];

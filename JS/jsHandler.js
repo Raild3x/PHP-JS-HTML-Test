@@ -91,8 +91,7 @@ function newElement(tblName, fields) {
             for (fieldName in columns) {
                 var dataType = columns[fieldName];
                 fieldType = getFieldType(dataType, fieldName);
-                fieldName = fixString(fieldName);
-                fields.innerHTML += "<label class='fieldLabel'>" + fieldName + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field'></br>";
+                fields.innerHTML += "<label class='fieldLabel'>" + fixString(fieldName) + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field' value="+getDefaultValue(fieldType, fieldName)+"></br>";
                 activeFieldIds.push(fieldName+"Field");
             }
             
@@ -115,8 +114,15 @@ function getFieldType(dataType, fieldName) {
     return "text";
 }
 
+function getDefaultValue(fieldType, fieldName) {
+    if (fieldName.search("Id") != -1) {
+        return Math.random(1,2147483647);
+    }
+    return "";
+}
+
 function fixString(str) {
-    str.replace(/([a-z])([A-Z])/g, '$1 $2');
+    str = str.replace(/([a-z])([A-Z])/g, '$1 $2');
     str = str.charAt(0).toUpperCase() + str.slice(1);
     return str;
 }

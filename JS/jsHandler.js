@@ -36,14 +36,15 @@ function setupHtml() {
 
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
-    console.log(document.getElementById("optionButtons").innerHTML)
-    document.getElementById("optionButtons").innerHTML = "<button id='newElement'>New Element</button>"
-        +"<button id='selectElement'>Select Element</button>"
-        +"<button id='updateElement'>Update Element</button>"
-        +"<button id='deleteElement'>Delete Element</button>";
-    console.log(document.getElementById("optionButtons").innerHTML);
-    
-    
+    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the table: "+tblName;
+    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showInput('"+tblName+"', 'new')>New Element</button>"
+        +"<button id='selectElement' onclick=showInput('"+tblName+"', 'select')>Select Element</button>"
+        +"<button id='updateElement' onclick=showInput('"+tblName+"', 'update')>Update Element</button>"
+        +"<button id='deleteElement' onclick=showInput('"+tblName+"', 'delete')>Delete Element</button>";
+}
+
+function showInput(tblName,operation) {
+    console.log("Performing operation: "+operation+" on table: "+tblName);
 }
 
 

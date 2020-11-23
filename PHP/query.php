@@ -4,9 +4,6 @@ include 'sqlCommands.php';
 
 // Read data sent over post
 
-$tblName = $_POST['tblName'];
-$values = $_POST['values'];
-
 if (isset($_POST['cmd'])) {
     $cmd = $_POST['cmd'];
 }
@@ -30,7 +27,7 @@ foreach ($newRowCmds as $val) {
 
 CloseConnection($conn);
 
-if (!success) {
+if (!$success) {
     echo "Failed Query";
 }
 

@@ -43,27 +43,18 @@ function newRow($conn, $tableName, $values) {
 	}
 
 	$sql = 'INSERT INTO '.$tableName.' VALUES (';
-	/*$keys = array_keys($values);
-	for ($x = 0; $x < (sizeof($values)-1); $x++) {
-		$sql = $sql.' '.$keys[$x].',';
-	} 
-	$sql = $sql.' '.$keys[sizeof($values) - 1].') VALUES (';
-	for ($x = 0; $x < (sizeof($values)-1); $x++) {
-		$sql = $sql.' '.$values[$keys[$x]].',';
-	} 
-	$sql = $sql.' '.$values[$keys[sizeof($values)-1]].')';
-	*/
+
 	for ($x = 0; $x < (sizeof($values)-1); $x++) {
 		$sql = $sql." '".$values[$x]."',";
 	}
 	$sql = $sql." '".$values[sizeof($values)-1]."');";
-	echo $sql;
+
+	echo $sql; // remove this later
+
     $stmt = $conn -> query($sql);
     if( $stmt === false) {
         die("Failed to create statement: ");
     }
-
-	//sqlsrv_free_stmt( $stmt);
 }
 
 function deleteRow($conn, $tableName, $target, $values) {

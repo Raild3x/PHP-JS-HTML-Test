@@ -25,7 +25,7 @@ function setupHtml() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             div.innerHTML = "";
-            var list = this.response;
+            var list = this.response.split(",");
             console.log(this.response);
             for(var i = 0; i < list.length; i++){ 
                 div.innerHTML = div.innerHTML + ("<button>"+list[i]+"</button>"); 

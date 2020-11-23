@@ -72,7 +72,8 @@ function newElement(tblName, fields) {
             console.log(this.response);
             var columns = JSON.parse(this.response);
             for (col in columns) {
-                fields.innerHTML = fields.innerHTML + col + "<input type='text' id='"+col+"Field'></br>";
+                col = columns[col];
+                fields.innerHTML = fields.innerHTML + "<label text-align:'left'>" + col + "</label><input type='text' id='"+col+"Field'></br>";
             }
             
         }

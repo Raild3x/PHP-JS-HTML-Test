@@ -29,8 +29,8 @@ function submitQuery() {
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
     
+    document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {
-        document.getElementById("response").innerHTML = "Response: waiting for response...";
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("response").innerHTML = "Response: " +  this.response;
             //alert("READY!");

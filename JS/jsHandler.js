@@ -2,6 +2,7 @@
 
 var activeFieldIds = [];
 var currentOperation = null;
+var currentTable = null;
 
 
 // FUNCTIONS
@@ -42,29 +43,29 @@ function setupHtml() {
     };
 }
 
-function openOptions(tblName) {
-    console.log("Table Selected: "+tblName);
+function openOptions() {
+    console.log("Table Selected: "+currentTable);
     currentOperation = null;
     document.getElementById("fields").innerHTML = "";
-    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+tblName+"</b> table.";
-    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+tblName+"','new')>New Element</button>"
-        +"<button id='selectElement' onclick=showOperationInputs('"+tblName+"','select')>Select Element</button>"
-        +"<button id='updateElement' onclick=showOperationInputs('"+tblName+"','update')>Update Element</button>"
-        +"<button id='deleteElement' onclick=showOperationInputs('"+tblName+"','delete')>Delete Element</button>";
+    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+currentTable+"</b> table.";
+    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+currentTable+"','new')>New Element</button>"
+        +"<button id='selectElement' onclick=showOperationInputs('"+currentTable+"','select')>Select Element</button>"
+        +"<button id='updateElement' onclick=showOperationInputs('"+currentTable+"','update')>Update Element</button>"
+        +"<button id='deleteElement' onclick=showOperationInputs('"+currentTable+"','delete')>Delete Element</button>";
 }
 
-function showOperationInputs(tblName, operation) {
-    console.log("Performing operation: "+operation+" on table: "+tblName);
+function showOperationInputs(operation) {
+    console.log("Performing operation: "+operation+" on table: "+currentTable);
     activeFieldIds = [];
     currentOperation = operation;
     var fields = document.getElementById("fields")
     fields.innerHTML = ""
     switch(operation) {
         case "new":
-            newElement(tblName, fields);
+            newElement(fields);
             break;
         case "select":
-            selectElement(tblName, fields);
+            selectElement(fields);
             break;
         case "update":
             break;
@@ -73,19 +74,19 @@ function showOperationInputs(tblName, operation) {
     }
 }
 
-function selectElement(tblName, fields) {
+function selectElement(fields) {
 
 }
 
 
-function newElement(tblName, fields) {
+function newElement(fields) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getArray.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd=columns&tblName="+tblName);
+    xhttp.send("cmd=columns&currentTable="+currentTable);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            fields.innerHTML = "Enter the data fields for a new <b>"+tblName+"</b> entry.</br>";
+            fields.innerHTML = "Enter the data fields for a new <b>"+currentTable+"</b> entry.</br>";
             console.log(this.response);
             var columns = JSON.parse(this.response);
             for (fieldName in columns) {
@@ -133,10 +134,15 @@ function fixString(str) {
 function submitQuery() {
     //collect fields
     var response = document.getElementById("response")
+    if (currentTable == null) {
+        response.innerHTML = "Response: No table yet selected to operate on.";
+        return;
+    }
     if (currentOperation == null) {
         response.innerHTML = "Response: No Operation Selected to perform.";
         return;
     }
+    
 
     var values = "";
     for (i in activeFieldIds) {
@@ -155,7 +161,7 @@ function submitQuery() {
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
+    xhttp.send("cmd="+currentOperation+"&currentTable="+currentTable+"&values="+values);
 
     document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {
@@ -170,14 +176,14 @@ function submitQuery() {
 function oldsubmitQuery() {
     // The boxes are currently disabled in favor of this so I dont have to constantly retype the info
     const cmd = "new row"; //document.getElementById("cmd").value.toLowerCase();
-    const tblName = "user"; //document.getElementById("tblName").value
+    const currentTable = "user"; //document.getElementById("currentTable").value
     const values = "12345 1997-12-29 David L Hunt 2dloganh@gmail.com"; //document.getElementById("values").value
 
     var xhttp = new XMLHttpRequest();
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
+    xhttp.send("cmd="+cmd+"&currentTable="+currentTable+"&values="+values);
 
     document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {

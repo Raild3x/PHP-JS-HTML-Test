@@ -81,9 +81,11 @@ function updateElement(fields) {
 }
 
 function selectElement(fields) {
-    fields.innerHTML = "Specify your arguments for selection.</br>";
-    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField'></br>";
+    fields.innerHTML = "Specify your arguments for selection. Separate multiple items with Commas.</br>";
+    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField' value='*'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='condition1Field'></br>";
+    activeFieldIds.push("columnsField");
+    activeFieldIds.push("conditionsField");
 }
 
 
@@ -156,11 +158,11 @@ function submitQuery() {
     for (i in activeFieldIds) {
         var id = activeFieldIds[i];
         var data = document.getElementById(id).value
-        values += data+",";
-        if (data.search(" ") != -1) {
+        values += data+"|";
+        /*if (data.search(" ") != -1) {
             response.innerHTML = "Response: Invalid space detected in "+id+".";
             return;
-        }
+        }*/
     }
     values = values.slice(0,-1);
     console.log("cmd="+currentOperation+"&tblName="+currentTable+"&values="+values);

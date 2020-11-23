@@ -14,8 +14,9 @@ if (isset($_POST['tblName'])) {
     $tblName = $_POST['tblName'];
 }
 if (isset($_POST['values'])) {
-    $values = explode(",",$_POST['values']);
+    $values = explode("|",$_POST['values']);
 }
+
 
 $conn = OpenConnection();
 
@@ -24,10 +25,12 @@ switch ($cmd) {
         newRow($conn, $tblName, $values);
         break;
     case "select":
-        if ($values[0] == "") {
+        if (sizeof($values) == 1) {
             readTable($conn, $tblName);
         } else {
-            select($conn, $tblName, $values);
+            $columns = explode(",",$values[0]);
+            $conditions = explode(",",$values[1]);
+            select($conn, $tblName, $columns, $conditions);
         }
         break;
 

@@ -29,7 +29,8 @@ function setupHtml() {
             console.log(this.response);
             var list = JSON.parse(this.response);
             for(var i = 0; i < list.length; i++){ 
-                div.innerHTML = div.innerHTML + ("<button id='"+list[i]+"' class='tableButton' onclick=openOptions('"+list[i]+"')>"+list[i]+"</button>"); 
+                var tblName = fixString(list[i]);
+                div.innerHTML = div.innerHTML + ("<button id='"+list[i]+"' class='tableButton' onclick=openOptions('"+list[i]+"')>"+tblName+"</button>"); 
             } 
         }
     };
@@ -73,13 +74,18 @@ function newElement(tblName, fields) {
             var columns = JSON.parse(this.response);
             for (col in columns) {
                 col = columns[col];
-                col = col.replace(/([a-z])([A-Z])/g, '$1 $2');
-                col = col.charAt(0).toUpperCase() + col.slice(1);
+                col = fixString(col);
                 fields.innerHTML = fields.innerHTML + "<label class='fieldLabel'>" + col + ": </label><input type='text' id='"+col+"Field'></br>";
             }
             
         }
     };
+}
+
+function fixString(str) {
+    str.replace(/([a-z])([A-Z])/g, '$1 $2');
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+    return str;
 }
 
 

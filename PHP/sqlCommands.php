@@ -26,7 +26,7 @@ function newTable($conn, $tableName, $values) {
 		return false;
 	}
 	if (tableExists($conn, $tableName)) {
-		die();
+		return false;
 	}
 
 	$sql = "CREATE TABLE ".$tableName." (".$values.");";

@@ -72,14 +72,30 @@ function newElement(tblName, fields) {
             fields.innerHTML = "Enter the data fields for a new <b>"+tblName+"</b> entry.</br>";
             console.log(this.response);
             var columns = JSON.parse(this.response);
-            for (col in columns) {
-                col = columns[col];
-                col = fixString(col);
-                fields.innerHTML = fields.innerHTML + "<label class='fieldLabel'>" + col + ": </label><input type='text' id='"+col+"Field'></br>";
+            for (dataType in columns) {
+                var fieldName = columns[dataType];
+                fieldName = fixString(fieldName);
+                fieldType = getFieldType(dataType);
+                fields.innerHTML = fields.innerHTML + "<label class='fieldLabel'>" + fieldName + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field'></br>";
             }
             
         }
     };
+}
+
+function getFieldType(dataType, fieldName) {
+    if (dataType.search("varchar")) {
+        if (fieldName.search("email")) {
+            return "email";
+        } else {
+            return "text";
+        }
+    } else if (dataType.search("int")) {
+        return "number";
+    } else if (dataType.search("date")) {
+        return "date";
+    }
+    return "text";
 }
 
 function fixString(str) {

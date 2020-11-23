@@ -12,7 +12,7 @@ function tableExists($conn, $tableName) {
 	$sql = "DESCRIBE ".$tableName.";";
 	$stmt = $conn->query($sql);
 	if( $stmt === false) {
-		echo $statementFailure;
+		echo $tableName " does not exist.";
         return false;
     }
 	echo $tableName." exists.";
@@ -21,10 +21,12 @@ function tableExists($conn, $tableName) {
 
 function newTable($conn, $tableName, $values) {
 	global $connectionFailure, $statementFailure;
-	if( !$conn ) {
+	if (!$conn) {
 		echo "Connection could not be established.<br/>";
 		return false;
 	}
+	if (!tableExists($conn, $tableName))
+		die()
 
 	$sql = "CREATE TABLE ".$tableName." (".$values.");";
     $stmt = $conn->query($sql);

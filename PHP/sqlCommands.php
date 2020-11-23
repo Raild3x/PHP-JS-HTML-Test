@@ -30,7 +30,7 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
     $stmt = $conn->query($sql );
     if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
+        die("Statement is false. ");
     }
 
 	//sqlsrv_free_stmt( $stmt);
@@ -39,7 +39,7 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 function newRow($conn, $tableName, $values) {
 	if( !$conn ) {
 		echo "Connection could not be established.<br />";
-		die( print_r( sqlsrv_errors(), true));
+		die();
 	}
 
 	$sql = 'INSERT INTO '.$tableName.' (';
@@ -58,9 +58,9 @@ function newRow($conn, $tableName, $values) {
 	}
 	$sql = $sql.' '.$values[sizeof($values)-1].');';
 
-    $stmt = $conn->query($sql );
+    $stmt = $conn->query($sql);
     if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
+        die("Statement is false.");
     }
 
 	//sqlsrv_free_stmt( $stmt);
@@ -75,7 +75,7 @@ function deleteRow($conn, $tableName, $target, $values) {
 	$sql = 'DELETE FROM '.$tableName.' WHERE '.$target.'='.$values;
     $stmt = $conn->query($sql );
     if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
+        die("Statement is false.");
     }
 
 	//sqlsrv_free_stmt( $stmt);

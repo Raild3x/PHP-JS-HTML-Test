@@ -77,7 +77,7 @@ function readTable($conn, $tableName, $columns) {
 	}
 
 	if ($columns == "all" || $columns == "") {
-		$columns = "*"
+		$columns = "*";
 	}
 
 	$sql = "SELECT ".$columns." FROM ".$tableName.";";
@@ -103,7 +103,7 @@ function select($conn, $tableName, $columns, $conditions) {
 	}
 
 	if ($columns == "all" || $columns == "") {
-		$columns = "*"
+		$columns = "*";
 	}
 
 	$sql = "SELECT ".$columns." FROM ".$tableName." WHERE ".$conditions.";";

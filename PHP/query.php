@@ -10,10 +10,10 @@ $values = $_POST['values'];
 $conn = OpenConnection();
 
 $newRowCmds = array("new row");
-for ($i = 0; $i < (sizeof($newRowCmds)-1); $i++) {
-    if ($newRowCmds[$i] === $cmd) {
+foreach ($newRowCmds as $val) {
+    if ($val == $cmd) {
         newRow($conn, $tblName, $values);
-        echo "Successfully added new row"
+        echo "Successfully added new row";
         break;
     }
 } 

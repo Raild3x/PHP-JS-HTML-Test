@@ -31,7 +31,7 @@ function submitQuery() {
     xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
     
     xhttp.onreadystatechange = function () {
-        alert("StateChanged");
+        document.getElementById("response").innerHTML = "Response: waiting for response...";
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("response").innerHTML = "Response: " +  this.response;
             //alert("READY!");

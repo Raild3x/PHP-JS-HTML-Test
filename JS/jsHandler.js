@@ -73,7 +73,7 @@ function newElement(tblName, fields) {
             var columns = JSON.parse(this.response);
             for (col in columns) {
                 col = columns[col];
-                col.replace(/([A-Z])/g, ' $1').trim();
+                col = col.replace(/([a-z])([A-Z])/g, '$1 $2');
                 col = col.charAt(0).toUpperCase() + col.slice(1);
                 fields.innerHTML = fields.innerHTML + "<label class='fieldLabel'>" + col + ": </label><input type='text' id='"+col+"Field'></br>";
             }

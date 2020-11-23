@@ -25,7 +25,7 @@ function newTable($conn, $tableName, $values) {
 		echo $connectionFailure;
 		return false;
 	}
-	if (!tableExists($conn, $tableName)) {
+	if (tableExists($conn, $tableName)) {
 		die();
 	}
 

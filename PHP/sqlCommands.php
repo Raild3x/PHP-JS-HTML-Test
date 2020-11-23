@@ -47,7 +47,7 @@ function getTables($conn) {
 	}
 	$tables = array();
 	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
-		array_push($tables, $table[0]);    // print the table that was returned on that row.
+		array_push($tables, $table[0]);
 	}
 	return $tables;
 }
@@ -58,14 +58,14 @@ function getColumns($conn, $tblName) {
 		die($connectionFailure);
 	}
 
-	$sql = "SHOW COLUMNS FROM ".$tblName.";"; //"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ".$tblName.";";
+	$sql = "DESCRIBE ".$tblName.";"; //"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ".$tblName.";";
     $stmt = $conn->query($sql);
     if( $stmt === false) {
 		die($statementFailure);
 	}
-	$tables = array();
-	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
-		array_push($tables, $table[0]);    // print the table that was returned on that row.
+	$cols = array();
+	while($row = $stmt->fetch_array()) {
+		$cols[$row['Field']] = $row['Type'];
 	}
 	return $tables;
 }

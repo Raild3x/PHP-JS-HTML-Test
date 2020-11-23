@@ -1,5 +1,10 @@
 <?php
+include 'dbConnection.php';
 
-echo "Ready!";
+$conn = OpenConnection();
+
+echo "Connected Successfully";
+
+CloseConnection($conn);
 
 ?>

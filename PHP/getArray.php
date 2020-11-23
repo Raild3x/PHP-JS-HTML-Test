@@ -7,7 +7,6 @@ $tblName;
 
 if (isset($_POST['cmd'])) {
     $cmd = $_POST['cmd'];
-    echo "AAAAAAAAAAAA";
 }
 
 if (isset($_POST['tblName'])) {

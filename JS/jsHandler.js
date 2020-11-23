@@ -20,6 +20,7 @@ function loadPage() {
 function setupHtml() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getArray.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("cmd=tables");
     var div = document.getElementById("tableButtons")
     xhttp.onreadystatechange = function () {
@@ -63,6 +64,7 @@ function showOperationInputs(tblName, operation) {
 function newElement(tblName, fields) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getArray.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("cmd=columns&tblName="+tblName);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {

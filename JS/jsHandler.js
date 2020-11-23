@@ -19,8 +19,8 @@ function loadPage() {
 
 function setupHtml() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "../PHP/getTables.php", true);
-    xhttp.send();
+    xhttp.open("POST", "../PHP/getArray.php", true);
+    xhttp.send("cmd=tables");
     var div = document.getElementById("tableButtons")
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -36,7 +36,7 @@ function setupHtml() {
 
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
-    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+tblName+"</b> table.";
+    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b><i>"+tblName+"</i></b> table.";
     document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+tblName+"','new')>New Element</button>"
         +"<button id='selectElement' onclick=showOperationInputs('"+tblName+"','select')>Select Element</button>"
         +"<button id='updateElement' onclick=showOperationInputs('"+tblName+"','update')>Update Element</button>"
@@ -45,6 +45,35 @@ function openOptions(tblName) {
 
 function showOperationInputs(tblName, operation) {
     console.log("Performing operation: "+operation+" on table: "+tblName);
+    var fields = document.getElementById("fields")
+    fields.innerHTML = ""
+    switch(operation) {
+        case "new":
+            fields.innerHTML = "Enter the data fields for a new <b><i>"+tblName+"</i></b> entry.</br>";
+            var columns = getTableColumns(tblName);
+            for (col in columns) {
+                fields.innerHTML = fields.innerHTML + col + "<input type='text' id='"+col+"Field'></br>";
+            }
+            
+            break;
+        case "select":
+            break;
+        case "update":
+            break;
+        case "delete":
+            break;
+    }
+}
+
+function getTableColumns(tblName) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../PHP/getArray.php", true);
+    xhttp.send("cmd=columns&tblName="+tblName);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            return JSON.parse(this.response);
+        }
+    };
 }
 
 

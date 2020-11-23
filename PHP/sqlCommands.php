@@ -52,6 +52,24 @@ function getTables($conn) {
 	return $tables;
 }
 
+function getColumns($conn) {
+	global $connectionFailure, $statementFailure;
+	if (!$conn) {
+		die($connectionFailure);
+	}
+
+	$sql = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ".$tblName.";";
+    $stmt = $conn->query($sql);
+    if( $stmt === false) {
+		die($statementFailure);
+	}
+	$tables = array();
+	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
+		array_push($tables, $table[0]);    // print the table that was returned on that row.
+	}
+	return $tables;
+}
+
 function readTable($conn, $tableName) {
 	global $connectionFailure, $statementFailure;
 	if (!$conn) {

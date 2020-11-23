@@ -25,8 +25,9 @@ function newTable($conn, $tableName, $values) {
 		echo $connectionFailure;
 		return false;
 	}
-	if (!tableExists($conn, $tableName))
-		die()
+	if (!tableExists($conn, $tableName)) {
+		die();
+	}
 
 	$sql = "CREATE TABLE ".$tableName." (".$values.");";
     $stmt = $conn->query($sql);

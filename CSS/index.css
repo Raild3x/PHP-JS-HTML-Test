@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-input[type=text], select {
+input, select {
     width: 60%;
     padding: 12px 20px;
     margin: 8px 0;

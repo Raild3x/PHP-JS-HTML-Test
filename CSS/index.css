@@ -10,7 +10,7 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    align: right;
+    text-align: left;
 }
 
 input[type=submit] {
@@ -34,6 +34,14 @@ input[type=submit]:hover {
     padding: 20px;
     margin-right: min(25%, 150px);
     margin-left: min(25%, 150px);
+}
+
+#fields {
+    text-align: left;
+}
+
+.fieldLabel {
+    text-align: right;
 }
 
 .buttonBar {

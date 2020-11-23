@@ -84,7 +84,7 @@ function newElement(fields) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getArray.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd=columns&currentTable="+currentTable);
+    xhttp.send("cmd=columns&tblName="+currentTable);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             fields.innerHTML = "Enter the data fields for a new <b>"+currentTable+"</b> entry.</br>";
@@ -162,7 +162,7 @@ function submitQuery() {
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd="+currentOperation+"&currentTable="+currentTable+"&values="+values);
+    xhttp.send("cmd="+currentOperation+"&tblName="+currentTable+"&values="+values);
 
     document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {
@@ -184,7 +184,7 @@ function oldsubmitQuery() {
     // Send PHP request as (post/get, file location, async option)
     xhttp.open("POST", "../PHP/query.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("cmd="+cmd+"&currentTable="+currentTable+"&values="+values);
+    xhttp.send("cmd="+cmd+"&tblName="+currentTable+"&values="+values);
 
     document.getElementById("response").innerHTML = "Response: waiting for response...";
     xhttp.onreadystatechange = function () {

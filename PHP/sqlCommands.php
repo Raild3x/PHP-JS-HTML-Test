@@ -29,21 +29,20 @@ function newTable($conn, $tableName, $values) {
 	$sql = "CREATE TABLE ".$tableName." (".$values.");";
     $stmt = $conn->query($sql);
     if( $stmt === false) {
-		echo $statementFailure;
-        return false;
+		die($statementFailure);
     }
 	return true;
 }
 
 function readTable($conn, $tableName) {
 	global $connectionFailure, $statementFailure;
-	if( !$conn ) {
+	if (!$conn) {
 		die($connectionFailure);
 	}
 
 	$sql = "SELECT * FROM ".$tableName."";
     $stmt = $conn->query($sql );
-    if( $stmt === false) {
+    if ($stmt === false) {
         die($statementFailure);
     }
 	$count = 0;
@@ -58,13 +57,13 @@ function readTable($conn, $tableName) {
 
 function updateTable($conn, $tableName, $change, $column, $targetId) {
 	global $connectionFailure, $statementFailure;
-	if( !$conn ) {
-		die($connectionFailure));
+	if (!$conn) {
+		die($connectionFailure);
 	}
 
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
     $stmt = $conn->query($sql );
-    if( $stmt === false) {
+    if ($stmt === false) {
         die($statementFailure);
     }
 
@@ -74,7 +73,7 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 function newRow($conn, $tableName, $values) {
 	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		die($connectionFailure));
+		die($connectionFailure);
 	}
 
 	$sql = 'INSERT INTO '.$tableName.' VALUES (';
@@ -95,7 +94,7 @@ function newRow($conn, $tableName, $values) {
 function deleteRow($conn, $tableName, $target, $values) {
 	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
-		die($connectionFailure));
+		die($connectionFailure);
 	}
 
 	$sql = 'DELETE FROM '.$tableName.' WHERE '.$target.'='.$values;

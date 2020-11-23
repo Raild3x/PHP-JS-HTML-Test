@@ -58,7 +58,7 @@ function getColumns($conn, $tblName) {
 		die($connectionFailure);
 	}
 
-	$sql = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ".$tblName.";";
+	$sql = "SHOW COLUMNS FROM ".$tblName.";"; //"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ".$tblName.";";
     $stmt = $conn->query($sql);
     if( $stmt === false) {
 		die($statementFailure);

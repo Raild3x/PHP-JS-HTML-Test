@@ -7,7 +7,7 @@ function readTable($conn, $tableName) {
 	}
 
 	$sql = "SELECT * FROM ".$tableName."";
-    $stmt = query( $conn, $sql );
+    $stmt = $conn->query($sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
@@ -28,7 +28,7 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 	}
 
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
-    $stmt = sqlsrv_query( $conn, $sql );
+    $stmt = sqlsrv_$conn->query($sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
@@ -58,7 +58,7 @@ function newRow($conn, $tableName, $values) {
 	}
 	$sql = $sql.' '.$values[sizeof($values)-1].');';
 
-    $stmt = query( $conn, $sql );
+    $stmt = $conn->query($sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
@@ -73,7 +73,7 @@ function deleteRow($conn, $tableName, $target, $value) {
 	}
 
 	$sql = 'DELETE FROM '.$tableName.' WHERE '.$target.'='.$values;
-    $stmt = sqlsrv_query( $conn, $sql );
+    $stmt = sqlsrv_$conn->query($sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }

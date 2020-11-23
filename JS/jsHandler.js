@@ -37,10 +37,10 @@ function setupHtml() {
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
     document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+tblName+"</b> table.";
-    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+tblName+"', 'new')>New Element</button>"
-        +"<button id='selectElement' onclick=showOperationInputs(\""+tblName+"\", \"select\")>Select Element</button>"
-        +"<button id='updateElement' onclick=showOperationInputs('"+tblName+"', 'update')>Update Element</button>"
-        +"<button id='deleteElement' onclick=showOperationInputs('"+tblName+"', 'delete')>Delete Element</button>";
+    document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('"+tblName+"','new')>New Element</button>"
+        +"<button id='selectElement' onclick=showOperationInputs('"+tblName+"','select')>Select Element</button>"
+        +"<button id='updateElement' onclick=showOperationInputs('"+tblName+"','update')>Update Element</button>"
+        +"<button id='deleteElement' onclick=showOperationInputs('"+tblName+"','delete')>Delete Element</button>";
 }
 
 function showOperationInputs(tblName, operation) {

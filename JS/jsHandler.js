@@ -27,7 +27,7 @@ function setupHtml() {
             div.innerHTML = "";
             var list = this.response;
             for(var i = 0; i < list.length; i++){ 
-                div.innerHTML = div.innerHTML + (<button>list[i]</button>); 
+                div.innerHTML = div.innerHTML + ("<button>"+list[i]+"</button>"); 
             } 
         }
     };

@@ -10,12 +10,12 @@ function tableExists($conn, $tableName) {
 
 	$sql = "DESCRIBE ".$tableName.";";
 	$stmt = $conn->query($sql);
-	echo $tableName." exists: ".$stmt;
 	if( $stmt === false) {
 		echo $statementFailure;
         return false;
     }
-
+	echo $tableName." exists.";
+	return true;
 }
 
 function newTable($conn, $tableName, $values) {

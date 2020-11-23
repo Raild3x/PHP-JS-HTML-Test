@@ -157,6 +157,7 @@ function submitQuery() {
     var values = "";
     for (i in activeFieldIds) {
         var id = activeFieldIds[i];
+        console.log(id);
         var data = document.getElementById(id).value
         if (data != "") {
             values += data+"|";

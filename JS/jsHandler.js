@@ -28,10 +28,14 @@ function setupHtml() {
             var list = JSON.parse(this.response);
             console.log(this.response);
             for(var i = 0; i < list.length; i++){ 
-                div.innerHTML = div.innerHTML + ("<button>"+list[i]+"</button>"); 
+                div.innerHTML = div.innerHTML + ("<button id='"+list[i]+"' class='tableButton' onclick=openOptions('"+list[i]+"')>"+list[i]+"</button>"); 
             } 
         }
     };
+}
+
+function openOptions(tblName) {
+
 }
 
 

@@ -35,7 +35,7 @@ input[type=submit]:hover {
     margin-left: min(25%, 150px);
 }
 
-#tableButtons {
+.buttonBar {
     display: inline;
 }
 
@@ -43,9 +43,13 @@ button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
-    border: groove;
+    border: outset;
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #45a049;
+    border: inset;
+}
 
 

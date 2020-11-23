@@ -156,7 +156,7 @@ function submitQuery() {
         }
     }
     values = values.slice(0,-1);
-    console.log(values);
+    console.log("cmd="+currentOperation+"&tblName="+currentTable+"&values="+values);
 
     var xhttp = new XMLHttpRequest();
     // Send PHP request as (post/get, file location, async option)

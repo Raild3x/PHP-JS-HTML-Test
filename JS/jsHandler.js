@@ -26,10 +26,7 @@ function submitQuery() {
 
     var xhttp = new XMLHttpRequest();
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // Send PHP request as (post/get, file location, async option)
-    xhttp.open("POST", "../PHP/query.php", true);
-    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
-    
+
     xhttp.onreadystatechange = function () {
         alert("StateChanged");
         if (this.readyState == 4 && this.status == 200) {
@@ -39,7 +36,14 @@ function submitQuery() {
             document.getElementById("response").innerHTML = "Failed to read response: " + this.response + "\t"+this.readyState+":"+this.status;
             //alert("Something went wrong. ReadyState: " + this.readyState + ", Status: " + this.status);
         }
-    };
+    };    
+    
+    // Send PHP request as (post/get, file location, async option)
+    xhttp.open("POST", "../PHP/query.php", true);
+    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
+    
+    
+    
 
     //let query = document.getElementById("query").value
     //alert("Query was " + query);

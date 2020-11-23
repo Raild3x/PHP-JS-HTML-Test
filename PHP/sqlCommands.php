@@ -76,15 +76,14 @@ function readTable($conn, $tableName) {
 		die($connectionFailure);
 	}
 
-	$sql = "SELECT * FROM ".$tableName."";
-    $stmt = $conn->query($sql );
+	$sql = "SELECT * FROM ".$tableName.";";
+    $stmt = $conn->query($sql);
     if ($stmt === false) {
         die($statementFailure);
     }
 	
-    while($row = $stmt->fetch_array()) {
-		echo $row."</br>";
-		
+    while($row = $stmt->fetch_assoc()) {
+		echo $row[0].",</br>";
     }
 }
 

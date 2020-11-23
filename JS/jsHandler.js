@@ -36,7 +36,14 @@ function setupHtml() {
 
 function openOptions(tblName) {
     console.log("Table Selected: "+tblName);
-    document.getElementById("optionButtons").style.display = "block";
+    document.getElementById("optionButtons").innerhtml = 
+        "<button id='newElement'>New Element</button>"
+        +"<button id='selectElement'>Select Element</button>"
+        +"<button id='updateElement'>Update Element</button>"
+        +"<button id='deleteElement'>Delete Element</button>";
+    
+    
+    
 }
 
 

@@ -45,8 +45,9 @@ function getTables($conn) {
     if( $stmt === false) {
 		die($statementFailure);
 	}
+	$tables = array();
 	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
-		$tables[] = $table;    // print the table that was returned on that row.
+		array_push($tables, $table[0]);    // print the table that was returned on that row.
 	}
 	return $tables;
 }

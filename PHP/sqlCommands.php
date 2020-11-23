@@ -67,7 +67,7 @@ function getColumns($conn, $tblName) {
 	while($row = $stmt->fetch_array()) {
 		$cols[$row['Field']] = $row['Type'];
 	}
-	return $tables;
+	return $cols;
 }
 
 function readTable($conn, $tableName) {

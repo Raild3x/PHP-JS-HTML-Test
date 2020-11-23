@@ -125,17 +125,37 @@ function submitQuery() {
     //collect fields
     var response = document.getElementById("response")
     if (currentOperation == null) {
-        response.innerHTML = "No Operation Selected to perform.";
+        response.innerHTML = "Response: No Operation Selected to perform.";
         return;
     }
 
     var values = "";
     for (i in activeFieldIds) {
         var id = activeFieldIds[i];
-        values += document.getElementById(id).value+",";
+        var data = document.getElementById(id).value
+        values += data+",";
+        if (data.search(" ") != -1) {
+            response.innerHTML = "Response: Invalid space detected in "+id+".";
+            return;
+        }
     }
     values = values.slice(0,-1);
     console.log(values);
+
+    var xhttp = new XMLHttpRequest();
+    // Send PHP request as (post/get, file location, async option)
+    xhttp.open("POST", "../PHP/query.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("cmd="+cmd+"&tblName="+tblName+"&values="+values);
+
+    document.getElementById("response").innerHTML = "Response: waiting for response...";
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("response").innerHTML = "Response: " +  this.response;
+        } else {
+            document.getElementById("response").innerHTML = "Failed to read response: " + this.response + "\t"+this.readyState+":"+this.status;
+        }
+    };
 }
 
 function oldsubmitQuery() {

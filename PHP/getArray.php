@@ -14,6 +14,7 @@ $conn = OpenConnection();
 if ($conn) {
     switch($cmd) {
         case "tables":
+            echo "reached";
             echo json_encode(getTables($conn));
             break;
         case "columns":

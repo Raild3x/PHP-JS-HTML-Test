@@ -136,7 +136,18 @@ function updateTable($conn, $tableName, $columns, $conditions) {
     $stmt = $conn -> query($sql);
     if ($stmt === false) {
         die($statementFailure.$conn->error);
-    }
+	}
+	
+	$count = 0;
+	while($row = $stmt->fetch_assoc()) {
+		echo "| ";
+		foreach ($row as $field => $value) {
+			echo $field.": ".$value." | ";
+		}
+		$count++;
+		echo "<hr>";
+	}
+	echo "Successfully updated ".$count." results from the ".$tableName." Table";
 }
 
 function newRow($conn, $tableName, $values) {

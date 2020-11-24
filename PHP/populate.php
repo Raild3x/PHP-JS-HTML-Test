@@ -17,7 +17,7 @@ function Populate($conn){
         $lN = $lastNames[rand(0, count($lastNames))];
         $email = $fN.$lN.rand(1,99).$emails[rand(1,count($emails))];
 
-        newRow($conn, "user", $id.",".$dob.",".$fN.",".$mI.",".$lN.",".$email);
+        newRow($conn, "user", array($id,$dob,$fN,$mI,$lN,$email));
     }
 
     // Populate paying users

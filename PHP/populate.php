@@ -1,6 +1,5 @@
 <?php
 
-include 'sqlCommands.php';
 
 $firstNames = array("Logan", "Taylor", "Liam", "Midge", "David", "Liam", "Michael");
 $lastNames = array("Hunt", "Norris", "Smith", "Brosie", "Colby", "Duncan", "Motley");

@@ -114,13 +114,16 @@ function select($conn, $tableName, $columns, $conditions) {
         die($statementFailure.$conn->error);
     }
 	
+	$count = 0;
     while($row = $stmt->fetch_assoc()) {
 		echo "| ";
 		foreach ($row as $field => $value) {
 			echo $field.": ".$value." | ";
 		}
+		$count++;
 		echo "<hr>";
 	}
+	echo "Displaying ".$count." results from the ".$tableName." Table";
 }
 
 function updateTable($conn, $tableName, $change, $column, $targetId) {

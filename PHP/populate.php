@@ -16,7 +16,7 @@ function Populate($conn){
     // Populate users
     for ($i = 0; $i < 500; $i++) {
         $id = rand(1,2147483646);
-        $dob = rand(1000,2020)."-0".rand(1,9)."-".rand(0,2).rand(1,8);
+        $dob = rand(1900,2020)."-0".rand(1,9)."-".rand(0,2).rand(1,8);
         $fN = randIndex($firstNames);
         $mI = chr(rand(65,90));
         $lN = randIndex($lastNames);

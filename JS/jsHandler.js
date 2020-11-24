@@ -48,7 +48,7 @@ function openOptions(clickedTable) {
     console.log("Table Selected: "+currentTable);
     currentOperation = null;
     document.getElementById("fields").innerHTML = "";
-    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+currentTable+"</b> table.";
+    document.getElementById("optionLabel").innerHTML = "Select an operation to perform on the <b>"+fixString(currentTable)+"</b> table.";
     document.getElementById("optionButtons").innerHTML = "<button id='newElement' onclick=showOperationInputs('new')>New Element</button>"
         +"<button id='selectElement' onclick=showOperationInputs('select')>Select Element</button>"
         +"<button id='updateElement' onclick=showOperationInputs('update')>Update Element</button>"
@@ -103,7 +103,7 @@ function newElement(fields) {
     xhttp.send("cmd=columns&tblName="+currentTable);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            fields.innerHTML = "Enter the data fields for a new <b>"+currentTable+"</b> entry.</br>";
+            fields.innerHTML = "Enter the data fields for a new <b>"+fixString(currentTable)+"</b> entry.</br>";
             console.log(this.response);
             let columns = JSON.parse(this.response);
             for (let fieldName in columns) {

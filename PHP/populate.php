@@ -31,7 +31,7 @@ function Populate($conn){
 
     // Populate avatar
     for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "avatar", array(getRandom($conn, "user", "userId"), randIndex($avatarNames), randIndex($speciesList));
+        newRow($conn, "avatar", array(getRandom($conn, "user", "userId"), randIndex($avatarNames), randIndex($speciesList)));
     }
 
     // Populate devUnit

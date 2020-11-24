@@ -18,7 +18,7 @@ if ($conn) {
     newTable($conn, "user",
         "userId INT NOT NULL PRIMARY KEY, dob DATE, firstName VARCHAR(255), middleInitial VARCHAR(1), lastName VARCHAR(255), email VARCHAR(255)");
     newTable($conn, "freeUser",
-        "userId INT NOT NULL PRIMARY KEY, usageQuota INT, FOREIGN KEY (userId) REFERENCES user(userId)");
+        "userId INT NOT NULL, usageQuota INT, FOREIGN KEY (userId) REFERENCES user(userId)");
     newTable($conn, "avatar",
         "userId INT, name VARCHAR(255), species VARCHAR(255), FOREIGN KEY (userId) REFERENCES user(userId)");
     newTable($conn, "payingUser",

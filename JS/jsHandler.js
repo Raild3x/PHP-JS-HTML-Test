@@ -89,9 +89,10 @@ function selectElement(fields) {
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
     document.getElementById("columnsField").defaultValue = "*";
     document.getElementById("tableField").defaultValue = currentTable;
+    activeFieldIds.push("tableField");
     activeFieldIds.push("columnsField");
     activeFieldIds.push("conditionField");
-    activeFieldIds.push("tableField");
+    
 }
 
 

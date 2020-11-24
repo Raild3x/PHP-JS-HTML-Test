@@ -195,9 +195,9 @@ function getRandom($conn, $table, $column) {
 
 	$sql = 'SELECT '.$column." FROM ".$table." ORDER BY RAND() LIMIT 1";
 	$stmt = $conn->query($sql);
-	echo "Random for ".$table." : ".$column;
+	echo " | Random for ".$table." : ".$column;
     if( $stmt === false) {
-        die($statementFailure.$conn->error);
+        die("GetRandom: ".$statementFailure.$conn->error);
 	}
 	
 	return $stmt->fetch_array()[0];

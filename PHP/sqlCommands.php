@@ -169,6 +169,19 @@ function deleteRow($conn, $tableName, $target, $values) {
     }
 }
 
+function dropTable($conn, $tableName) {
+	global $connectionFailure, $statementFailure;
+	if( !$conn ) {
+		die($connectionFailure);
+	}
+
+	$sql = 'DROP TABLE '.$tableName;
+    $stmt = $conn->query($sql);
+    if( $stmt === false) {
+        die($statementFailure.$conn->error);
+    }
+}
+
 function getRandom($conn, $table, $column) {
 	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
@@ -180,8 +193,18 @@ function getRandom($conn, $table, $column) {
     if( $stmt === false) {
         die($statementFailure.$conn->error);
 	}
-	echo $stmt;
 	return $stmt;
+}
+
+function executeSQL($conn, $sql) {
+	global $connectionFailure, $statementFailure;
+	if( !$conn ) {
+		die($connectionFailure);
+	}
+    $stmt = $conn->query($sql );
+    if( $stmt === false) {
+        die($statementFailure.$conn->error);
+	}
 }
 
 ?>

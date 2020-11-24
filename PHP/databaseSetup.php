@@ -6,6 +6,7 @@ include "populate.php";
 
 $conn = OpenConnection();
 if ($conn) {
+    dropTable("user");
 
     newTable($conn, "user",
         "userId INT NOT NULL PRIMARY KEY, dob DATE, firstName VARCHAR(255), middleInitial VARCHAR(1), lastName VARCHAR(255), email VARCHAR(255)");

@@ -29,7 +29,7 @@ function newTable($conn, $tableName, $values) {
 	$sql = "CREATE TABLE ".$tableName." (".$values.");";
     $stmt = $conn->query($sql);
     if( $stmt === false) {
-		die($statementFailure);
+		die($statementFailure.$conn->error);
     }
 	return true;
 }
@@ -43,7 +43,7 @@ function getTables($conn) {
 	$sql = "SHOW TABLES;";
     $stmt = $conn->query($sql);
     if( $stmt === false) {
-		die($statementFailure);
+		die($statementFailure.$conn->error);
 	}
 	$tables = array();
 	while($table = $stmt->fetch_array()) { // go through each row that was returned in $result
@@ -61,7 +61,7 @@ function getColumns($conn, $tblName) {
 	$sql = "DESCRIBE ".$tblName.";"; //"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ".$tblName.";";
     $stmt = $conn->query($sql);
     if( $stmt === false) {
-		die($statementFailure);
+		die($statementFailure.$conn->error);
 	}
 	$cols = array();
 	while($row = $stmt->fetch_array()) {
@@ -83,7 +83,7 @@ function readTable($conn, $tableName, $columns) {
 	$sql = "SELECT ".$columns." FROM ".$tableName.";";
     $stmt = $conn->query($sql);
     if ($stmt === false) {
-        die($statementFailure);
+        die($statementFailure.$conn->error);
     }
 	
     while($row = $stmt->fetch_assoc()) {
@@ -109,7 +109,7 @@ function select($conn, $tableName, $columns, $conditions) {
 	$sql = "SELECT ".$columns." FROM ".$tableName." WHERE ".$conditions.";";
     $stmt = $conn->query($sql);
     if ($stmt === false) {
-        die($statementFailure);
+        die($statementFailure.$conn->error);
     }
 	
     while($row = $stmt->fetch_assoc()) {
@@ -130,7 +130,7 @@ function updateTable($conn, $tableName, $change, $column, $targetId) {
 	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
     $stmt = $conn -> query($sql);
     if ($stmt === false) {
-        die($statementFailure);
+        die($statementFailure.$conn->error);
     }
 }
 
@@ -151,7 +151,7 @@ function newRow($conn, $tableName, $values) {
 
     $stmt = $conn -> query($sql);
     if( $stmt === false) {
-        die($statementFailure);
+        die($statementFailure.$conn->error);
 	}
 	//echo "</br> New row successfully added to ".$tableName;
 }
@@ -178,7 +178,7 @@ function getRandom($conn, $table, $column) {
 	$sql = 'SELECT '.$column." FROM ".$table." ORDER BY RAND() LIMIT 1";
     $stmt = $conn->query($sql );
     if( $stmt === false) {
-        die($statementFailure);
+        die($statementFailure.$conn->error);
 	}
 	echo $stmt;
 	return $stmt;

@@ -176,8 +176,11 @@ function deleteRow($conn, $tableName, $target, $values) {
 
 function dropTable($conn, $tableName) {
 	global $connectionFailure, $statementFailure;
-	if( !$conn ) {
+	if (!$conn) {
 		die($connectionFailure);
+	}
+	if (!tableExists($conn, $tableName)) {
+		die($tableName." does not exist for dropping.");
 	}
 
 	$sql = 'DROP TABLE '.$tableName;

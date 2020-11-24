@@ -10,10 +10,10 @@ function Populate($conn){
 
     // Populate users
     for ($i = 0; $i < 500; $i++) {
-        $id = rand();
+        $id = rand(1,2147483646);
         $dob = rand(1,2020)."-".rand(1,12)."-".rand(1,29);
         $fN = $firstNames[rand(0, count($firstNames)-1)];
-        $mI = chr(rand(65,92));
+        $mI = chr(rand(65,90));
         $lN = $lastNames[rand(0, count($lastNames)-1)];
         $email = $fN.$lN.rand(1,99).$emails[rand(1,count($emails)-1)];
 

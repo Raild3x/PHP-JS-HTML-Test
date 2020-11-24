@@ -138,7 +138,7 @@ function updateTable($conn, $tableName, $columns, $conditions) {
         die($statementFailure.$conn->error);
 	}
 
-	echo "Successfully updated results from the ".$tableName." Table";
+	echo "Successfully updated results from the ".$tableName." Table</br>";
 	select($conn, $tableName, "*", $conditions);
 }
 

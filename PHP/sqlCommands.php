@@ -126,13 +126,13 @@ function select($conn, $tableName, $columns, $conditions) {
 	echo "Displaying ".$count." results from the ".$tableName." Table";
 }
 
-function updateTable($conn, $tableName, $change, $column, $targetId) {
+function updateTable($conn, $tableName, $columns, $conditions) {
 	global $connectionFailure, $statementFailure;
 	if (!$conn) {
 		die($connectionFailure);
 	}
 
-	$sql = 'UPDATE '.$tableName.' SET '.$change.' WHERE '.$column.'='.$targetId;
+	$sql = 'UPDATE '.$tableName.' SET '.$columns.' WHERE '.$conditions;
     $stmt = $conn -> query($sql);
     if ($stmt === false) {
         die($statementFailure.$conn->error);

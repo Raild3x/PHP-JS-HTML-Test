@@ -78,8 +78,10 @@ function showOperationInputs(operation) {
 
 function updateElement(fields) {
     fields.innerHTML = "Choose what elements to update.";
-    fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField'></br>";
+    fields.innerHTML += "<label class='fieldLabel'>New Column Values:</label><input type='text' id='columnsField'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
+    activeFieldIds.push("columnsField");
+    activeFieldIds.push("conditionField");
 }
 
 function selectElement(fields) {

@@ -34,7 +34,9 @@ switch ($cmd) {
             select($conn, $tables, $columns, $conditions);
         }
         break;
-
+    case "update":
+        updateTable($conn, $tblName, $values[0], $values[1]);
+        break;
     default:
         echo "Invalid cmd passed";
 }

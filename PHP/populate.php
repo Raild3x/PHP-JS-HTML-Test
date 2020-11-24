@@ -6,8 +6,8 @@ function randIndex($arr) {
 }
 
 function Populate($conn){
-    $firstNames = array("Logan", "Taylor", "Liam", "Midge", "David", "Liam", "Michael", "Hailey");
-    $lastNames = array("Hunt", "Norris", "Smith", "Brosie", "Colby", "Duncan", "Motley");
+    $firstNames = array("Logan", "Taylor", "Liam", "Midge", "David", "Liam", "Michael", "Hailey", "Mophyr", "Solar", "Joe");
+    $lastNames = array("Hunt", "Norris", "Smith", "Brosie", "Colby", "Duncan", "Motley", "Avern", "Jonas");
     $emails = array("@earthlink.net", "@gmail.com", "@outlook.com", "@bigfoot.org");
     $avatarNames = array("Ragnarok", "Gimli", "ShadowMan", "xX_Sonic_Xx");
     $speciesList = array("Elf", "Nord", "Imperial", "Orc", "Khajit", "Argonian", "Dunmer");

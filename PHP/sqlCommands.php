@@ -11,7 +11,7 @@ function tableExists($conn, $tableName) {
 	$sql = "DESCRIBE ".$tableName.";";
 	$stmt = $conn->query($sql);
 	if( $stmt === false) {
-		echo $tableName." does not exist.<br/>";
+		//echo $tableName." does not exist.<br/>";
         return false;
     }
 	return true;

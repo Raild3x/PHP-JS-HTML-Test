@@ -55,7 +55,7 @@ function Populate($conn){
         newRow($conn, "vrExperience", array(rand(1,2147483646), "VrName_Placeholder".rand(0,9999), getRandom($conn, "payingUser", "userId")));
     }
 
-    /echo "Populating supportedDevices</br>";
+    //echo "Populating supportedDevices</br>";
     // Populate supportedDevices
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "supportedDevices", array(getRandom($conn, "vrExperience", "expId"), "Device_Placeholder".rand(0,9999)));

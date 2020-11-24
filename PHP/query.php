@@ -37,6 +37,9 @@ switch ($cmd) {
     case "update":
         updateTable($conn, $tblName, $values[0], $values[1]);
         break;
+    case "delete":
+        deleteRow($conn, $tblName, $values[0]);
+        break;
     default:
         echo "Invalid cmd passed";
 }

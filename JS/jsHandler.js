@@ -72,8 +72,15 @@ function showOperationInputs(operation) {
             updateElement(fields);
             break;
         case "delete":
+            deleteElement(fields);
             break;
     }
+}
+
+function deleteElement(fields) {
+    fields.innerHTML = "Specifiy a condition for what rows to delete.</br>";
+    fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
+    activeFieldIds.push("conditionField");
 }
 
 function updateElement(fields) {

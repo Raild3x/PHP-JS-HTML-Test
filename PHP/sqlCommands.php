@@ -138,7 +138,7 @@ function updateTable($conn, $tableName, $columns, $conditions) {
         die($statementFailure.$conn->error);
 	}
 
-	echo "Successfully updated results from the ".$tableName." Table</br>";
+	echo "Successfully updated results from the ".$tableName." Table<hr>";
 	select($conn, $tableName, "*", $conditions);
 }
 
@@ -164,17 +164,18 @@ function newRow($conn, $tableName, $values) {
 	//echo "</br> New row successfully added to ".$tableName;
 }
 
-function deleteRow($conn, $tableName, $target, $values) {
+function deleteRow($conn, $tableName, $condition) {
 	global $connectionFailure, $statementFailure;
 	if( !$conn ) {
 		die($connectionFailure);
 	}
 
-	$sql = 'DELETE FROM '.$tableName.' WHERE '.$target.'='.$values;
+	$sql = 'DELETE FROM '.$tableName.' WHERE '.$condition;
     $stmt = $conn->query($sql );
     if( $stmt === false) {
         die($statementFailure);
-    }
+	}
+	echo $stmt;
 }
 
 function dropTable($conn, $tableName) {

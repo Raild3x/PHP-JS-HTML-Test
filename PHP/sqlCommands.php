@@ -191,11 +191,12 @@ function getRandom($conn, $table, $column) {
 	}
 
 	$sql = 'SELECT '.$column." FROM ".$table." ORDER BY RAND() LIMIT 1";
-    $stmt = $conn->query($sql );
+    $stmt = $conn->query($sql);
     if( $stmt === false) {
         die($statementFailure.$conn->error);
 	}
-	return $stmt;
+	
+	return $stmt->fetch_row();
 }
 
 function executeSQL($conn, $sql) {

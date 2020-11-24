@@ -17,20 +17,20 @@ if ($conn) {
 
     newTable($conn, "user",
         "userId INT NOT NULL PRIMARY KEY, dob DATE, firstName VARCHAR(255), middleInitial VARCHAR(1), lastName VARCHAR(255), email VARCHAR(255)");
-    newTable($conn, "freeUser",
+    newTable($conn, "free_user",
         "userId INT NOT NULL, usageQuota INT, FOREIGN KEY (userId) REFERENCES user(userId)");
     newTable($conn, "avatar",
         "userId INT NOT NULL, name VARCHAR(255), species VARCHAR(255), FOREIGN KEY (userId) REFERENCES user(userId)");
-    newTable($conn, "payingUser",
+    newTable($conn, "paying_user",
         "userId INT NOT NULL, monthlyFee INT, FOREIGN KEY (userId) REFERENCES user(userId)");
-    newTable($conn, "devUnit",
+    newTable($conn, "dev_unit",
         "unitId INT NOT NULL, unitName VARCHAR(255), unitDesc VARCHAR(255)");
-    newTable($conn, "vrExperience",
-        "expId INT, name VARCHAR(255), maintainer INT, FOREIGN KEY (maintainer) REFERENCES payingUser(userId)");
-    newTable($conn, "supportedDevices",
-        "expId INT, device VARCHAR(255), FOREIGN KEY (expId) REFERENCES vrExperience(expId)");
+    newTable($conn, "vr_experience",
+        "expId INT, name VARCHAR(255), maintainer INT, FOREIGN KEY (maintainer) REFERENCES paying_user(userId)");
+    newTable($conn, "supported_devices",
+        "expId INT, device VARCHAR(255), FOREIGN KEY (expId) REFERENCES vr_experience(expId)");
     newTable($conn, "develops",
-        "userId INT NOT NULL, unitId INT NOT NULL, unitName VARCHAR(255), expId INT, FOREIGN KEY (userId) REFERENCES user(userId), FOREIGN KEY (unitName) REFERENCES devUnit(unitName), FOREIGN KEY (unitId) REFERENCES devUnit(unitId), FOREIGN KEY (expId) REFERENCES vrExperience(expId)");
+        "userId INT NOT NULL, unitId INT NOT NULL, unitName VARCHAR(255), expId INT, FOREIGN KEY (userId) REFERENCES user(userId), FOREIGN KEY (unitName) REFERENCES dev_unit(unitName), FOREIGN KEY (unitId) REFERENCES dev_unit(unitId), FOREIGN KEY (expId) REFERENCES vr_experience(expId)");
 
     Populate($conn);
     

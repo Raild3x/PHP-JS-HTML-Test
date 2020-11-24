@@ -175,7 +175,7 @@ function deleteRow($conn, $tableName, $condition) {
     if( $stmt === false) {
         die($statementFailure);
 	}
-	echo $stmt;
+	echo "Successfully deleted rows in the table ".$tableName." where ".$condition;
 }
 
 function dropTable($conn, $tableName) {

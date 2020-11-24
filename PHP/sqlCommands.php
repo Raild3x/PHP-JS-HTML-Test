@@ -147,13 +147,13 @@ function newRow($conn, $tableName, $values) {
 	}
 	$sql = $sql." '".$values[sizeof($values)-1]."');";
 
-	echo $sql; // remove this later
+	//echo $sql; // remove this later
 
     $stmt = $conn -> query($sql);
     if( $stmt === false) {
         die($statementFailure);
 	}
-	echo "</br> New row successfully added to ".$tableName;
+	//echo "</br> New row successfully added to ".$tableName;
 }
 
 function deleteRow($conn, $tableName, $target, $values) {

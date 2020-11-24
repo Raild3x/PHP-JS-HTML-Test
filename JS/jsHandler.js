@@ -97,7 +97,7 @@ function selectElement(fields) {
 
 
 function newElement(fields) {
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../PHP/getArray.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("cmd=columns&tblName="+currentTable);
@@ -105,10 +105,10 @@ function newElement(fields) {
         if (this.readyState == 4 && this.status == 200) {
             fields.innerHTML = "Enter the data fields for a new <b>"+currentTable+"</b> entry.</br>";
             console.log(this.response);
-            var columns = JSON.parse(this.response);
-            for (fieldName in columns) {
-                var dataType = columns[fieldName];
-                fieldType = getFieldType(dataType, fieldName);
+            let columns = JSON.parse(this.response);
+            for (let fieldName in columns) {
+                let dataType = columns[fieldName];
+                let fieldType = getFieldType(dataType, fieldName);
                 fields.innerHTML += "<label class='fieldLabel'>" + fixString(fieldName) + ": </label><input type='"+fieldType+"' id='"+fieldName+"Field' value="+getDefaultValue(fieldType, fieldName)+"></br>";
                 activeFieldIds.push(fieldName+"Field");
             }

@@ -28,8 +28,8 @@ switch ($cmd) {
         if (sizeof($values) == 2) {
             readTable($conn, $values[0], $values[1]);
         } else {
-            $columns = $values[1];//explode(",",$values[0]);
-            $conditions = $values[2];//explode(",",$values[1]);
+            $columns = $values[1];
+            $conditions = $values[2];
             $tables = $values[0];
             select($conn, $tables, $columns, $conditions);
         }

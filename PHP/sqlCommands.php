@@ -137,17 +137,9 @@ function updateTable($conn, $tableName, $columns, $conditions) {
     if ($stmt === false) {
         die($statementFailure.$conn->error);
 	}
-	
-	$count = 0;
-	while($row = $stmt->fetch_assoc()) {
-		echo "| ";
-		foreach ($row as $field => $value) {
-			echo $field.": ".$value." | ";
-		}
-		$count++;
-		echo "<hr>";
-	}
-	echo "Successfully updated ".$count." results from the ".$tableName." Table";
+
+	echo "Successfully updated results from the ".$tableName." Table";
+	select($conn, $tableName, $columns, $conditions);
 }
 
 function newRow($conn, $tableName, $values) {

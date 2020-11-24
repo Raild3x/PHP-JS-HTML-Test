@@ -84,9 +84,11 @@ function updateElement(fields) {
 
 function selectElement(fields) {
     fields.innerHTML = "Specify your arguments for selection. Separate <u>Columns</u> with commas and <u>Conditions</u> with <b>AND</b> or <b>OR</b></br>";
+    fields.innerHTML += "<label class='fieldLabel'>Accessible Tables:</label><input type='text' id='tableField'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Columns:</label><input type='text' id='columnsField'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
     document.getElementById("columnsField").defaultValue = "*";
+    document.getElementById("tableField").defaultValue = currentTable;
     activeFieldIds.push("columnsField");
     activeFieldIds.push("conditionField");
 }

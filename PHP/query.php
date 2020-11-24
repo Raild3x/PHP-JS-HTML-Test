@@ -25,14 +25,10 @@ switch ($cmd) {
         newRow($conn, $tblName, $values);
         break;
     case "select":
-        if (sizeof($values) == 2) {
-            readTable($conn, $tblName, $values[0]);
-        } else {
-            $columns = $values[1];//explode(",",$values[0]);
-            $conditions = $values[2];//explode(",",$values[1]);
-            $tables = $values[0];
-            select($conn, $tables, $columns, $conditions);
-        }
+        $columns = $values[1];//explode(",",$values[0]);
+        $conditions = $values[2];//explode(",",$values[1]);
+        $tables = $values[0];
+        select($conn, $tables, $columns, $conditions);
         break;
 
     default:

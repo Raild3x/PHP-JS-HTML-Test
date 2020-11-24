@@ -12,6 +12,7 @@ function Populate($conn){
     $avatarNames = array("Ragnarok", "Gimli", "ShadowMan", "xX_Sonic_Xx");
     $speciesList = array("Elf", "Nord", "Imperial", "Orc", "Khajit", "Argonian", "Dunmer");
 
+    echo "Populating users";
     // Populate users
     for ($i = 0; $i < 500; $i++) {
         $id = rand(1,2147483646);
@@ -24,25 +25,31 @@ function Populate($conn){
         newRow($conn, "user", array($id,$dob,$fN,$mI,$lN,$email));
     }
 
+    echo "Populating free users";
     // Populate free users
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "freeUser", array(getRandom($conn, "user", "userId"), rand(50,100)));
     }
 
+    echo "Populating paying users";
+    // Populate paying users
+    for ($i = 0; $i < 100; $i++) {
+        newRow($conn, "payingUser", array(getRandom($conn, "user", "userId"), rand(5,100)));
+    }
+
+    echo "Populating avatars";
     // Populate avatar
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "avatar", array(getRandom($conn, "user", "userId"), randIndex($avatarNames), randIndex($speciesList)));
     }
 
+    echo "Populating devunit";
     // Populate devUnit
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "devUnit", array(rand(1,2147483646), "UnitName_Placeholder", "UnitDesc_Placeholder"));
     }
 
-    // Populate paying users
-    for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "payingUser", array(getRandom($conn, "user", "userId"), rand(5,100)));
-    }
+    
 
 }
 

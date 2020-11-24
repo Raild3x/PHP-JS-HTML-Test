@@ -139,7 +139,7 @@ function updateTable($conn, $tableName, $columns, $conditions) {
 	}
 
 	echo "Successfully updated results from the ".$tableName." Table";
-	select($conn, $tableName, $columns, $conditions);
+	select($conn, $tableName, "*", $conditions);
 }
 
 function newRow($conn, $tableName, $values) {

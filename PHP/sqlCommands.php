@@ -86,14 +86,16 @@ function readTable($conn, $tableName, $columns) {
         die($statementFailure.$conn->error);
     }
 	
+	$count = 0;
     while($row = $stmt->fetch_assoc()) {
 		echo "| ";
 		foreach ($row as $field => $value) {
 			echo $field.": ".$value." | ";
 		}
+		count++;
 		echo "<hr>";
 	}
-	echo "Displaying ".$tableName." Table";
+	echo "Displaying ".$count." results from the ".$tableName." Table";
 }
 
 function select($conn, $tableName, $columns, $conditions) {

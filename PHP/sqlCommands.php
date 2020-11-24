@@ -196,7 +196,7 @@ function getRandom($conn, $table, $column) {
         die($statementFailure.$conn->error);
 	}
 	
-	return $stmt->fetch_row();
+	return $stmt[0];
 }
 
 function executeSQL($conn, $sql) {

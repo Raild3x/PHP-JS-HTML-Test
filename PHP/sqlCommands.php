@@ -92,7 +92,7 @@ function readTable($conn, $tableName, $columns) {
 		foreach ($row as $field => $value) {
 			echo $field.": ".$value." | ";
 		}
-		count++;
+		$count++;
 		echo "<hr>";
 	}
 	echo "Displaying ".$count." results from the ".$tableName." Table";

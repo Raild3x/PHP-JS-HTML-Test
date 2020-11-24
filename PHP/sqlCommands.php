@@ -180,7 +180,7 @@ function dropTable($conn, $tableName) {
 		die($connectionFailure);
 	}
 	if (!tableExists($conn, $tableName)) {
-		die($tableName." does not exist for dropping.");
+		return;
 	}
 
 	$sql = 'DROP TABLE '.$tableName;

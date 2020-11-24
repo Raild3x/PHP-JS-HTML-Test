@@ -64,7 +64,7 @@ function Populate($conn){
     echo "Populating develops";
     // Populate develops
     for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "develops", array(getRandom($conn, "devUnit", "unitId"), getRandom($conn, "devUnit", "unitName"), getRandom($conn, "user", "userId"), getRandom($conn, "vrExperience", "expId"))));
+        newRow($conn, "develops", array(getRandom($conn, "devUnit", "unitId"), getRandom($conn, "devUnit", "unitName"), getRandom($conn, "user", "userId"), getRandom($conn, "vrExperience", "expId")));
     }
     
 

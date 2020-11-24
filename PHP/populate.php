@@ -12,7 +12,7 @@ function Populate($conn){
     $avatarNames = array("Ragnarok", "Gimli", "ShadowMan", "xX_Sonic_Xx");
     $speciesList = array("Elf", "Nord", "Imperial", "Orc", "Khajit", "Argonian", "Dunmer");
 
-    echo "Populating users";
+    echo "Populating users</br>";
     // Populate users
     for ($i = 0; $i < 500; $i++) {
         $id = rand(1,2147483646);
@@ -25,43 +25,43 @@ function Populate($conn){
         newRow($conn, "user", array($id,$dob,$fN,$mI,$lN,$email));
     }
 
-    echo "Populating free users";
+    echo "Populating free users</br>";
     // Populate free users
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "freeUser", array(getRandom($conn, "user", "userId"), rand(50,100)));
     }
 
-    echo "Populating paying users";
+    echo "Populating paying users</br>";
     // Populate paying users
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "payingUser", array(getRandom($conn, "user", "userId"), rand(5,100)));
     }
 
-    echo "Populating avatars";
+    echo "Populating avatars</br>";
     // Populate avatar
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "avatar", array(getRandom($conn, "user", "userId"), randIndex($avatarNames), randIndex($speciesList)));
     }
 
-    echo "Populating devunit";
+    echo "Populating devunit</br>";
     // Populate devUnit
     for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "devUnit", array(rand(1,2147483646), "UnitName_Placeholder", "UnitDesc_Placeholder"));
+        newRow($conn, "devUnit", array(rand(1,2147483646), "UnitName_Placeholder".rand(0,9999), "UnitDesc_Placeholder".rand(0,9999)));
     }
 
-    echo "Populating vrExperience";
+    echo "Populating vrExperience</br>";
     // Populate vrExperience
     for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "vrExperience", array(rand(1,2147483646), "VrName_Placeholder", getRandom($conn, "payingUser", "userId")));
+        newRow($conn, "vrExperience", array(rand(1,2147483646), "VrName_Placeholder".rand(0,9999), getRandom($conn, "payingUser", "userId")));
     }
 
-    echo "Populating supportedDevices";
+    echo "Populating supportedDevices</br>";
     // Populate supportedDevices
     for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "supportedDevices", array(getRandom($conn, "vrExperience", "expId"), "Device_Placeholder"));
+        newRow($conn, "supportedDevices", array(getRandom($conn, "vrExperience", "expId"), "Device_Placeholder".rand(0,9999)));
     }
 
-    echo "Populating develops";
+    echo "Populating develops</br>";
     // Populate develops
     for ($i = 0; $i < 100; $i++) {
         newRow($conn, "develops", array(getRandom($conn, "devUnit", "unitId"), getRandom($conn, "devUnit", "unitName"), getRandom($conn, "user", "userId"), getRandom($conn, "vrExperience", "expId")));

@@ -156,7 +156,7 @@ function newRow($conn, $tableName, $values) {
 
     $stmt = $conn -> query($sql);
     if( $stmt === false) {
-        die($statementFailure.$conn->error);
+        die("newRow: ".$statementFailure.$conn->error);
 	}
 	//echo "</br> New row successfully added to ".$tableName;
 }

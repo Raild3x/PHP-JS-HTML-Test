@@ -169,4 +169,19 @@ function deleteRow($conn, $tableName, $target, $values) {
     }
 }
 
+function getRandom($conn, $table, $column) {
+	global $connectionFailure, $statementFailure;
+	if( !$conn ) {
+		die($connectionFailure);
+	}
+
+	$sql = 'SELECT '.$column." FROM ".$table." ORDER BY RAND() LIMIT 1";
+    $stmt = $conn->query($sql );
+    if( $stmt === false) {
+        die($statementFailure);
+	}
+	echo $stmt;
+	return $stmt;
+}
+
 ?>

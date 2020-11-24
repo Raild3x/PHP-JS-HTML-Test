@@ -7,12 +7,12 @@ include "populate.php";
 $conn = OpenConnection();
 if ($conn) {
     dropTable($conn, "develops");
-    dropTable($conn, "supportedDevices");
-    dropTable($conn, "vrExperience");
-    dropTable($conn, "devUnit");
+    dropTable($conn, "supported_devices");
+    dropTable($conn, "vr_experience");
+    dropTable($conn, "dev_unit");
     dropTable($conn, "avatar");
-    dropTable($conn, "freeUser");
-    dropTable($conn, "payingUser");
+    dropTable($conn, "free_user");
+    dropTable($conn, "paying_user");
     dropTable($conn, "user");
 
     newTable($conn, "user",

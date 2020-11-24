@@ -58,7 +58,7 @@ function Populate($conn){
     echo "Populating supportedDevices";
     // Populate supportedDevices
     for ($i = 0; $i < 100; $i++) {
-        newRow($conn, "supportedDevices", array(getRandom($conn, "vrExperience", "expId"), "Device_Placeholder")));
+        newRow($conn, "supportedDevices", array(getRandom($conn, "vrExperience", "expId"), "Device_Placeholder"));
     }
 
     echo "Populating develops";

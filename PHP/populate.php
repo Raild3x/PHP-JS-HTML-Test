@@ -1,11 +1,13 @@
 <?php
 
 
-$firstNames = array("Logan", "Taylor", "Liam", "Midge", "David", "Liam", "Michael");
-$lastNames = array("Hunt", "Norris", "Smith", "Brosie", "Colby", "Duncan", "Motley");
-$emails = array("@earthlink.net", "@gmail.com", "@outlook.com", "@bigfoot.org");
+
 
 function Populate($conn){
+    $firstNames = array("Logan", "Taylor", "Liam", "Midge", "David", "Liam", "Michael");
+    $lastNames = array("Hunt", "Norris", "Smith", "Brosie", "Colby", "Duncan", "Motley");
+    $emails = array("@earthlink.net", "@gmail.com", "@outlook.com", "@bigfoot.org");
+
     // Populate users
     for ($i = 0; $i < 500; $i++) {
         $id = rand();

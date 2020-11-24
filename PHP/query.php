@@ -30,7 +30,8 @@ switch ($cmd) {
         } else {
             $columns = $values[0];//explode(",",$values[0]);
             $conditions = $values[1];//explode(",",$values[1]);
-            select($conn, $tblName, $columns, $conditions);
+            $tables = $values[2];
+            select($conn, $tables, $columns, $conditions);
         }
         break;
 

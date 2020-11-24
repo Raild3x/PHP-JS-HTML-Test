@@ -91,6 +91,7 @@ function selectElement(fields) {
     document.getElementById("tableField").defaultValue = currentTable;
     activeFieldIds.push("columnsField");
     activeFieldIds.push("conditionField");
+    activeFieldIds.push("tableField");
 }
 
 

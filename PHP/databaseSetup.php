@@ -20,11 +20,11 @@ if ($conn) {
     newTable($conn, "freeUser",
         "userId INT NOT NULL, usageQuota INT, FOREIGN KEY (userId) REFERENCES user(userId)");
     newTable($conn, "avatar",
-        "userId INT, name VARCHAR(255), species VARCHAR(255), FOREIGN KEY (userId) REFERENCES user(userId)");
+        "userId INT NOT NULL, name VARCHAR(255), species VARCHAR(255), FOREIGN KEY (userId) REFERENCES user(userId)");
     newTable($conn, "payingUser",
-        "userId INT, monthlyFee INT, FOREIGN KEY (userId) REFERENCES user(userId)");
+        "userId INT NOT NULL, monthlyFee INT, FOREIGN KEY (userId) REFERENCES user(userId)");
     newTable($conn, "devUnit",
-        "unitId INT, unitName VARCHAR(255), unitDesc VARCHAR(255)");
+        "unitId INT NOT NULL, unitName VARCHAR(255), unitDesc VARCHAR(255)");
     newTable($conn, "vrExperience",
         "expId INT, name VARCHAR(255), maintainer INT, FOREIGN KEY (maintainer) REFERENCES payingUser(userId)");
     newTable($conn, "supportedDevices",

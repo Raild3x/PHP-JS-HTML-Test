@@ -49,6 +49,23 @@ function Populate($conn){
         newRow($conn, "devUnit", array(rand(1,2147483646), "UnitName_Placeholder", "UnitDesc_Placeholder"));
     }
 
+    echo "Populating vrExperience";
+    // Populate vrExperience
+    for ($i = 0; $i < 100; $i++) {
+        newRow($conn, "vrExperience", array(rand(1,2147483646), "VrName_Placeholder", getRandom($conn, "payingUser", "userId")));
+    }
+
+    echo "Populating supportedDevices";
+    // Populate supportedDevices
+    for ($i = 0; $i < 100; $i++) {
+        newRow($conn, "supportedDevices", array(getRandom($conn, "vrExperience", "expId"), "Device_Placeholder")));
+    }
+
+    echo "Populating develops";
+    // Populate develops
+    for ($i = 0; $i < 100; $i++) {
+        newRow($conn, "develops", array(getRandom($conn, "devUnit", "unitId"), getRandom($conn, "devUnit", "unitName"), getRandom($conn, "user", "userId"), getRandom($conn, "vrExperience", "expId"))));
+    }
     
 
 }

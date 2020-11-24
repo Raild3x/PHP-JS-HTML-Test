@@ -69,7 +69,7 @@ function showOperationInputs(operation) {
             selectElement(fields);
             break;
         case "update":
-            updateElements(fields);
+            updateElement(fields);
             break;
         case "delete":
             break;
@@ -78,7 +78,7 @@ function showOperationInputs(operation) {
 
 function updateElement(fields) {
     fields.innerHTML = "Choose what elements to update.";
-    fields.innerHTML += "<label class='fieldLabel'>New Column Values:</label><input type='text' id='columnsField'></br>";
+    fields.innerHTML += "<label class='fieldLabel'>(colName=newVal)   New Column Values:</label><input type='text' id='columnsField'></br>";
     fields.innerHTML += "<label class='fieldLabel'>Condition:</label><input type='text' id='conditionField'></br>";
     activeFieldIds.push("columnsField");
     activeFieldIds.push("conditionField");
